@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <p>© {new Date().getFullYear()} OpenPDF Platform. Independently engineered & permissive open-source foundation.</p>
+          <p>© {new Date().getFullYear()} PDFKarlo Platform. Independently engineered & permissive open-source foundation.</p>
           <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
             <span>Client-Side v1.0.0</span>
             <span>Zero Data Collection</span>

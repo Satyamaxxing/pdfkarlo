@@ -1,4 +1,4 @@
-# OpenPDF Platform — Project Overview
+# PDFKarlo Platform — Project Overview
 
 > **Document ID:** DOC-01-OVERVIEW  
 > **Status:** Approved Baseline  
@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-The **OpenPDF Platform** is an independently engineered, high-performance, privacy-first PDF processing platform designed to provide fast, reliable, and secure document manipulation tools. Benchmarked against industry market leaders like [iLovePDF](https://www.ilovepdf.com/), OpenPDF provides an alternative built on a **100% permissive open-source foundation (Apache-2.0, MIT, BSD)** that completely eliminates copyleft/AGPL licensing risks.
+The **PDFKarlo Platform** is an independently engineered, high-performance, privacy-first PDF processing platform designed to provide fast, reliable, and secure document manipulation tools. Benchmarked against industry market leaders like [iLovePDF](https://www.ilovepdf.com/), PDFKarlo provides an alternative built on a **100% permissive open-source foundation (Apache-2.0, MIT, BSD)** that completely eliminates copyleft/AGPL licensing risks.
 
 The platform architecture decouples interactive client-side document preparation (powered by Next.js 15, React 19, and Mozilla PDF.js) from an asynchronous backend service mesh (FastAPI, Celery, Redis, PostgreSQL 16, and MinIO/S3 object storage).
 
@@ -24,9 +24,9 @@ Based on Phase 1 research ([`research/product-overview.md`](file:///E:/REA/resea
 - **Data Privacy Concerns:** Uploaded files on public platforms are subjected to varied retention policies (e.g. iLovePDF's publicly advertised 2-hour retention) with undocumented server-side handling and raw client IP logging.
 - **Aggressive Paywalls:** Advanced compression, batch processing, and high-DPI rasterization are locked behind subscriptions or credit meters.
 
-### 2.2 OpenPDF Platform Differentiation Matrix
+### 2.2 PDFKarlo Platform Differentiation Matrix
 
-| Dimension | Industry Benchmark (iLovePDF) | OpenPDF Platform |
+| Dimension | Industry Benchmark (iLovePDF) | PDFKarlo Platform |
 | :--- | :--- | :--- |
 | **Source & Licensing** | Proprietary closed-source SaaS | 100% Permissive Open Source (Apache-2.0 / MIT / BSD) |
 | **Copyleft Risk** | Undisclosed (potential AGPL dependencies) | **Zero AGPL Exposure** (enforced by automated CI license gating) |

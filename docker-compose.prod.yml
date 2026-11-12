@@ -1,7 +1,7 @@
 version: '3.8'
 
 # ==============================================================================
-# OpenPDF Platform - Production Docker Compose Stack
+# PDFKarlo Platform - Production Docker Compose Stack
 # Multi-container orchestration for high-availability PDF processing
 # ==============================================================================
 

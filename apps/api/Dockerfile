@@ -1,5 +1,5 @@
 # ==============================================================================
-# OpenPDF Platform - API Gateway Production Dockerfile
+# PDFKarlo Platform - API Gateway Production Dockerfile
 # Multi-stage, non-root, hardened Python 3.12 container
 # ==============================================================================
 

@@ -10,7 +10,7 @@
 
 ## 1. Sprint Objectives
 
-The primary objective of Sprint 1 was to establish the production-grade architectural foundation, scaffolding, and verification infrastructure for the OpenPDF Platform without prematurely writing high-level PDF manipulation algorithms:
+The primary objective of Sprint 1 was to establish the production-grade architectural foundation, scaffolding, and verification infrastructure for the PDFKarlo Platform without prematurely writing high-level PDF manipulation algorithms:
 1. Construct the monorepo workspace spanning Next.js frontend, FastAPI API gateway, Celery task worker, Docker Compose environment, and test suites.
 2. Implement backend data models, database connection sessions, and API endpoints for health monitoring, job ingestion, and byte streaming.
 3. Build the leased download token management subsystem using atomic Redis Lua scripts to prevent download link harvesting while supporting HTTP Range retry flows.

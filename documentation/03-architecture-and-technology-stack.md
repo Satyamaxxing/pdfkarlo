@@ -10,7 +10,7 @@
 
 ## 1. Architectural Philosophy & Principles
 
-The OpenPDF Platform is designed around five non-negotiable architectural tenets:
+The PDFKarlo Platform is designed around five non-negotiable architectural tenets:
 1. **Zero Copyleft Exposure:** Absolute avoidance of AGPL and non-permissive copyleft libraries (such as Ghostscript or MuPDF) anywhere in the direct or transitive dependency tree.
 2. **Ephemeral Document Lifecycle:** Zero long-term document retention. Every uploaded byte and processed output is strictly purged within a 2-hour window ($T_0 + 120\text{m}$) backed by an active background sweeper.
 3. **Decoupled Architecture (Option B):** Independent separation between the user-facing web interface (Next.js 15), the REST API gateway (FastAPI), the asynchronous processing queue (Celery + Redis), and the persistent relational state (PostgreSQL 16).
@@ -68,7 +68,7 @@ graph TD
 
 ## 4. Copyleft Elimination & Dependency Audit
 
-A major architectural goal of the OpenPDF Platform is the complete avoidance of copyleft taint. Proprietary PDF platforms frequently embed Ghostscript (AGPL) or MuPDF (AGPL), exposing commercial SaaS deployers to source disclosure obligations.
+A major architectural goal of the PDFKarlo Platform is the complete avoidance of copyleft taint. Proprietary PDF platforms frequently embed Ghostscript (AGPL) or MuPDF (AGPL), exposing commercial SaaS deployers to source disclosure obligations.
 
 ### Dependency License Audit (Verified locally via `scripts/audit_licenses.py`):
 - **FastAPI / Starlette / Pydantic:** MIT License

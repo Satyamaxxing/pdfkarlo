@@ -1,6 +1,6 @@
 /**
  * Live Public Deployment Verification Suite for Cloudflare Pages
- * Runs headless Chromium against the live public URL: https://openpdf-1z7.pages.dev
+ * Runs headless Chromium against the live public URL: https://pdfkarlo.pages.dev
  * Validates TLS, direct route access, network isolation (no PDF uploads), and in-browser processing.
  */
 
@@ -8,7 +8,7 @@ const fs = require("fs");
 const path = require("path");
 const puppeteer = require("puppeteer-core");
 
-const BASE_URL = "https://openpdf-1z7.pages.dev";
+const BASE_URL = process.env.BASE_URL || "https://pdfkarlo.pages.dev";
 const EDGE_PATH = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const ARTIFACTS_DIR = "C:\\Users\\Satyam Kumar\\.gemini\\antigravity\\brain\\4111dda1-704d-4803-a0a3-f54ccc996e8e";
 const FIXTURES_DIR = path.resolve(__dirname, "../../../test_fixtures_fidelity");

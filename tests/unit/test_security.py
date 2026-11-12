@@ -85,7 +85,7 @@ def test_generate_secure_token():
 
 
 def test_calculate_sha256():
-    data = b"Hello, OpenPDF Platform!"
+    data = b"Hello, PDFKarlo Platform!"
     h = calculate_sha256(data)
     assert len(h) == 64
     assert h == calculate_sha256(data)

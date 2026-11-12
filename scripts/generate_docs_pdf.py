@@ -223,7 +223,7 @@ def convert_markdown_to_pdf(md_path: str, pdf_path: str, title: str):
 <body>
 {html_body}
 <div class="footer-notice">
-    OpenPDF Platform &bull; Technical Architecture Documentation &bull; Generated November 2026
+    PDFKarlo Platform &bull; Technical Architecture Documentation &bull; Generated November 2026
 </div>
 </body>
 </html>
@@ -268,27 +268,27 @@ def main():
         (
             r"E:\REA\documentation\01-project-overview.md",
             r"E:\REA\documentation\pdf\Project-Overview.pdf",
-            "OpenPDF Platform — Project Overview",
+            "PDFKarlo Platform — Project Overview",
         ),
         (
             r"E:\REA\documentation\02-sprint-1-completion-report.md",
             r"E:\REA\documentation\pdf\Sprint-1-Completion-Report.pdf",
-            "OpenPDF Platform — Sprint 1 Completion Report",
+            "PDFKarlo Platform — Sprint 1 Completion Report",
         ),
         (
             r"E:\REA\documentation\04-developer-setup-handbook.md",
             r"E:\REA\documentation\pdf\Developer-Setup-Handbook.pdf",
-            "OpenPDF Platform — Developer Setup Handbook",
+            "PDFKarlo Platform — Developer Setup Handbook",
         ),
         (
             r"E:\REA\documentation\08-sprint-2-merge-pdf-report.md",
             r"E:\REA\documentation\pdf\Sprint-2-Merge-PDF-Report.pdf",
-            "OpenPDF Platform — Sprint 2 Merge PDF Report",
+            "PDFKarlo Platform — Sprint 2 Merge PDF Report",
         ),
         (
             r"E:\REA\documentation\09-sprint-2-split-pdf-report.md",
             r"E:\REA\documentation\pdf\Sprint-2-Split-PDF-Report.pdf",
-            "OpenPDF Platform — Sprint 2 Split PDF Report",
+            "PDFKarlo Platform — Sprint 2 Split PDF Report",
         ),
     ]
 
@@ -301,7 +301,7 @@ def main():
         generated_pdfs.append(pdf_file)
 
     # Merge all into complete documentation
-    complete_pdf_path = r"E:\REA\documentation\pdf\OpenPDF-Platform-Complete-Documentation.pdf"
+    complete_pdf_path = r"E:\REA\documentation\pdf\PDFKarlo-Platform-Complete-Documentation.pdf"
     print(f"\nMerging all reports into {os.path.basename(complete_pdf_path)}...")
     combined = pikepdf.Pdf.new()
     for p in generated_pdfs:

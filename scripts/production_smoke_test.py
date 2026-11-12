@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Production Smoke Test Suite for OpenPDF Platform.
+"""Production Smoke Test Suite for PDFKarlo Platform.
 
 Executes end-to-end integration smoke tests across all five core MVP PDF tools,
 health probes, and leased download tokens against a running deployment.
@@ -44,7 +44,7 @@ def poll_job_until_done(client: httpx.Client, base_url: str, job_id: str, timeou
 
 def run_smoke_tests(base_url: str = "http://localhost"):
     print(f"================================================================")
-    print(f"OpenPDF Platform — Production Smoke Test Suite")
+    print(f"PDFKarlo Platform — Production Smoke Test Suite")
     print(f"Target Base URL: {base_url}")
     print(f"================================================================\n")
 

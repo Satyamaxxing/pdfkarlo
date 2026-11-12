@@ -10,7 +10,7 @@
 
 ## 1. Prerequisites
 
-Before setting up the OpenPDF Platform locally, ensure the following tools are installed on your workstation:
+Before setting up the PDFKarlo Platform locally, ensure the following tools are installed on your workstation:
 
 | Requirement | Minimum Version | Verified Version | Notes |
 | :--- | :--- | :--- | :--- |

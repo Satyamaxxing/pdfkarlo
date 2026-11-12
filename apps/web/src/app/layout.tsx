@@ -4,8 +4,22 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "OpenPDF — High-Performance, Privacy-First PDF Platform",
-  description: "Merge, split, compress, convert, and secure PDF documents with zero data retention and maximum speed.",
+  metadataBase: new URL("https://pdfkarlo.pages.dev"),
+  title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+  description: "Fast, private, and secure browser-based PDF tools. Merge, split, rotate, reorder, and remove PDF pages locally on your device with zero server uploads.",
+  openGraph: {
+    title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+    description: "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
+    url: "https://pdfkarlo.pages.dev",
+    siteName: "PDFKarlo",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+    description: "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
+  },
 };
 
 export default function RootLayout({

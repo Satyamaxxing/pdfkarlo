@@ -1,14 +1,14 @@
-# OpenPDF — Privacy-First Browser-Based PDF Toolkit
+# PDFKarlo — Privacy-First Browser-Based PDF Toolkit
 
-[![Production](https://img.shields.io/badge/Production-Live%20on%20Cloudflare%20Pages-22c55e?style=flat-square)](https://openpdf-1z7.pages.dev)
+[![Production](https://img.shields.io/badge/Production-Live%20on%20Cloudflare%20Pages-22c55e?style=flat-square)](https://pdfkarlo.pages.dev)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![pdf--lib](https://img.shields.io/badge/Engine-pdf--lib-red?style=flat-square)](https://pdf-lib.js.org/)
 [![PDF.js](https://img.shields.io/badge/Preview-PDF.js%204.10-orange?style=flat-square)](https://mozilla.github.io/pdf.js/)
 
-> **OpenPDF** is a fast, free, and privacy-first PDF utility suite engineered to process documents entirely in the user's browser. PDF documents and thumbnails never leave your device.
+> **PDFKarlo** is a fast, free, and privacy-first PDF utility suite engineered to process documents entirely in the user's browser. PDF documents and thumbnails never leave your device.
 
-- **Live Production URL:** [https://openpdf-1z7.pages.dev](https://openpdf-1z7.pages.dev)
+- **Live Production URL:** [https://pdfkarlo.pages.dev](https://pdfkarlo.pages.dev)
 - **Deployment Platform:** Cloudflare Pages Free Tier
 - **Processing Architecture:** 100% Client-Side Web Workers (`pdf-lib` + `pdfjs-dist`)
 
@@ -20,11 +20,11 @@ All five tools execute completely within the client browser using Web Workers an
 
 | Tool | Route | Capabilities |
 | :--- | :--- | :--- |
-| **Merge PDF** | [`/merge`](https://openpdf-1z7.pages.dev/merge) | Combine multiple PDF files into one document. Features multi-document page previews, drag-and-drop document reordering, and a Unified Sequence view showing every page across all uploaded files. |
-| **Split PDF** | [`/split`](https://openpdf-1z7.pages.dev/split) | Split documents using 3 modes: **Split by Ranges** (with real-time colored part badges), **Extract Pages** (visual page selection), and **Burst Mode** (extracts every page as standalone PDFs in a ZIP archive). |
-| **Rotate PDF** | [`/rotate`](https://openpdf-1z7.pages.dev/rotate) | Rotate pages visually with instant orientation preview. Dedicated bidirectional rotation buttons (CW +90°, CCW -90°) on every card, bulk rotate actions, and full-page high-resolution zoom modal. |
-| **Reorder PDF** | [`/reorder`](https://openpdf-1z7.pages.dev/reorder) | Visually rearrange pages with HTML5 drag-and-drop or position buttons (start, left, right, end). Includes "Reverse Order", "Reset to Original", and live moved indicators. |
-| **Remove PDF** | [`/remove`](https://openpdf-1z7.pages.dev/remove) | Delete unwanted or blank pages. Features click-to-delete toggles with red overlay and grayscale preview, quick range selection (e.g. `2-4`), and a zero-page deletion safeguard. |
+| **Merge PDF** | [`/merge`](https://pdfkarlo.pages.dev/merge) | Combine multiple PDF files into one document. Features multi-document page previews, drag-and-drop document reordering, and a Unified Sequence view showing every page across all uploaded files. |
+| **Split PDF** | [`/split`](https://pdfkarlo.pages.dev/split) | Split documents using 3 modes: **Split by Ranges** (with real-time colored part badges), **Extract Pages** (visual page selection), and **Burst Mode** (extracts every page as standalone PDFs in a ZIP archive). |
+| **Rotate PDF** | [`/rotate`](https://pdfkarlo.pages.dev/rotate) | Rotate pages visually with instant orientation preview. Dedicated bidirectional rotation buttons (CW +90°, CCW -90°) on every card, bulk rotate actions, and full-page high-resolution zoom modal. |
+| **Reorder PDF** | [`/reorder`](https://pdfkarlo.pages.dev/reorder) | Visually rearrange pages with HTML5 drag-and-drop or position buttons (start, left, right, end). Includes "Reverse Order", "Reset to Original", and live moved indicators. |
+| **Remove PDF** | [`/remove`](https://pdfkarlo.pages.dev/remove) | Delete unwanted or blank pages. Features click-to-delete toggles with red overlay and grayscale preview, quick range selection (e.g. `2-4`), and a zero-page deletion safeguard. |
 
 ---
 
@@ -166,4 +166,4 @@ All 75 unit and integration tests will execute against the backend engine.
 
 ## 6. License
 
-OpenPDF is released as open-source software under the MIT License. Built entirely with permissive open-source libraries with zero AGPL copyleft exposure.
+PDFKarlo is released as open-source software under the MIT License. Built entirely with permissive open-source libraries with zero AGPL copyleft exposure.

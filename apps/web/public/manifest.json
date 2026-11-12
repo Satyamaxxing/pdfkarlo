@@ -1,0 +1,9 @@
+{
+  "name": "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+  "short_name": "PDFKarlo",
+  "description": "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#059669"
+}

@@ -1,5 +1,5 @@
 # ==============================================================================
-# OpenPDF Platform - Next.js 15 Standalone Frontend Dockerfile
+# PDFKarlo Platform - Next.js 15 Standalone Frontend Dockerfile
 # Multi-stage production container with minimal Alpine runner (~115MB total)
 # ==============================================================================
 

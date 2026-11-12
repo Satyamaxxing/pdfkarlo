@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const puppeteer = require("puppeteer-core");
 
-const PROD_URL = "https://openpdf-1z7.pages.dev";
+const PROD_URL = process.env.TEST_URL || "https://pdfkarlo.pages.dev";
 const EDGE_PATH = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const FIXTURES_DIR = path.resolve(__dirname, "../../../test_fixtures_fidelity");
 
@@ -30,7 +30,7 @@ async function runLiveSmokeTests() {
   const statusCodes = await checkStatusCodes();
   console.log("Status codes:", statusCodes);
 
-  console.log("\n=== RUNNING LIVE BROWSER SMOKE TESTS ON https://openpdf-1z7.pages.dev ===");
+  console.log(`\n=== RUNNING LIVE BROWSER SMOKE TESTS ON ${PROD_URL} ===`);
   const report = {
     url: PROD_URL,
     statusCodes,

@@ -1,5 +1,5 @@
 # ==============================================================================
-# OpenPDF Platform - Celery Background Processing Worker Dockerfile
+# PDFKarlo Platform - Celery Background Processing Worker Dockerfile
 # Hardened container with native QPDF / pikepdf engine bindings
 # ==============================================================================
 

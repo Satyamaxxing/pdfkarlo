@@ -10,7 +10,7 @@
 
 ## 1. Current Platform Maturity Assessment
 
-With the completion of **Sprint 1: Architecture Foundation & Scaffolding**, the OpenPDF Platform has established its core distributed infrastructure:
+With the completion of **Sprint 1: Architecture Foundation & Scaffolding**, the PDFKarlo Platform has established its core distributed infrastructure:
 - **API Gateway & Routing:** Operational (FastAPI + Pydantic v2 + CORS).
 - **Relational Data Tier:** Operational (SQLAlchemy 2.0 async engine + models for jobs, files, artifacts, and tokens).
 - **Storage Subsystem:** Operational (Boto3 MinIO/S3 streaming wrapper with HTTP Range support).
