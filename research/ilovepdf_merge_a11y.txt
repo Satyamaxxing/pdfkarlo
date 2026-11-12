@@ -1,0 +1,34 @@
+- document:
+  - banner:
+    - navigation:
+      - link "iLovePDF":
+        - /url: /
+        - img "iLovePDF"
+      - list:
+        - listitem:
+          - link "Merge PDF":
+            - /url: /merge_pdf
+        - listitem:
+          - link "Split PDF":
+            - /url: /split_pdf
+        - listitem:
+          - link "Compress PDF":
+            - /url: /compress_pdf
+        - listitem: Convert PDF
+      - list:
+        - listitem: All PDF tools
+      - link "Login":
+        - /url: /login
+      - link "Sign up":
+        - /url: /register
+      - list:
+        - listitem
+  - heading "Merge PDF files" [level=1]
+  - heading "Combine PDFs in the order you want with the easiest PDF merger available." [level=2]
+  - link "Select PDF files":
+    - /url: javascript:;
+  - img
+  - img
+  - text: or drop PDFs here
+  - button "Choose File"
+  - text: © iLovePDF 2026 ® - Your PDF Editor

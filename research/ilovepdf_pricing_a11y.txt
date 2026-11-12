@@ -1,0 +1,421 @@
+- document:
+  - banner:
+    - navigation:
+      - link "iLovePDF":
+        - /url: /
+        - img "iLovePDF"
+      - list:
+        - listitem:
+          - link "Merge PDF":
+            - /url: /merge_pdf
+        - listitem:
+          - link "Split PDF":
+            - /url: /split_pdf
+        - listitem:
+          - link "Compress PDF":
+            - /url: /compress_pdf
+        - listitem: Convert PDF
+      - list:
+        - listitem: All PDF tools
+      - link "Login":
+        - /url: /login
+      - link "Sign up":
+        - /url: /register
+      - list:
+        - listitem
+  - paragraph: Pricing plans
+  - heading "Choose the plan that suits you" [level=1]
+  - button "Monthly Billing":
+    - paragraph: Monthly Billing
+  - button "Yearly Billing":
+    - paragraph: Yearly Billing
+  - text: "-42%"
+  - img "icon-free"
+  - paragraph: Basic
+  - img
+  - text: "1"
+  - heading "Free" [level=3]
+  - paragraph
+  - link "Start for free":
+    - /url: /
+  - paragraph: "Free features include:"
+  - list:
+    - listitem: Access to essential iLovePDF tools
+    - listitem: Limited document processing
+  - img "icon-premium"
+  - paragraph: Premium
+  - img
+  - text: 1 - 25
+  - heading "₹242 / month" [level=3]
+  - paragraph: ₹2,900 Billed annually
+  - link "Get Premium":
+    - /url: /user/premium/1
+  - text: How many users do you need? (Up to 25)
+  - button:
+    - img
+  - spinbutton "How many users do you need? (Up to 25)": "1"
+  - button:
+    - img
+  - paragraph: "Premium features include:"
+  - list:
+    - listitem: Full access to all iLovePDF tools
+    - listitem: Unlimited document processing
+    - listitem: Access across Web, Mobile, and Desktop
+    - listitem: Digital Signatures
+    - listitem: Workflows
+    - listitem: Ad-free experience
+    - listitem: Priority customer support
+    - listitem: Regional file processing
+    - listitem: 2,000 AI Credits
+  - img "icon-business"
+  - paragraph: Business
+  - img
+  - text: 25 +
+  - heading "Let's talk" [level=3]
+  - paragraph: Scalable solutions for your business with customized pricing.
+  - link "Contact sales":
+    - /url: /business#contact
+  - paragraph: "What’s included:"
+  - list:
+    - listitem: All Premium features
+    - listitem: Custom contracts designed for scalability
+    - listitem: Dedicated Account Manager
+    - listitem: Single Sign On (SSO)
+  - paragraph:
+    - text: iLovePDF is committed to supporting education. Are you a student or academic professional?
+    - link "Get a full year of Premium for free":
+      - /url: /education
+  - button "Compare the plans arrow":
+    - paragraph: Compare the plans
+    - img "arrow"
+  - img "icon-free"
+  - paragraph: Basic
+  - paragraph: Best for simple use
+  - link "Start for free":
+    - /url: /
+  - img "icon-premium"
+  - paragraph: Premium
+  - paragraph: Best for advanced use
+  - link "Get Premium":
+    - /url: /user/premium
+  - img "icon-business"
+  - paragraph: Business
+  - paragraph: Best for growing teams
+  - link "Contact sales":
+    - /url: /business#contact
+  - paragraph: Features
+  - paragraph: Tools
+  - paragraph: Limited tools
+  - paragraph: All tools included
+  - paragraph: All tools included
+  - paragraph: Batch processing
+  - paragraph: Limited
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: Filesize per task
+  - paragraph: Limited
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: Teams
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Volume discount
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Workflows
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Ad-free service
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Customer support
+  - paragraph: Basic
+  - paragraph: Preferential
+  - paragraph: Dedicated support
+  - paragraph: AI Credits
+  - img "No"
+  - img "AI Credits"
+  - text: 2,000
+  - img "AI Credits"
+  - text: Custom
+  - paragraph: Applications
+  - paragraph: Web
+  - img "Yes"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Desktop
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Mobile
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Security
+  - paragraph: Secure HTTPs connection
+  - img "yes"
+  - img "No"
+  - img "Yes"
+  - paragraph: ISO27001 certified
+  - img "yes"
+  - img "No"
+  - img "Yes"
+  - paragraph: Single Sign On (SSO)
+  - img "No"
+  - img "No"
+  - img "Yes"
+  - paragraph: Regional file processing
+  - img "No"
+  - paragraph: 7 regions
+  - paragraph: 11 regions
+  - paragraph: Other Products
+  - paragraph: iLoveIMG
+  - paragraph: Tools
+  - paragraph: Limited tools
+  - paragraph: All tools included
+  - paragraph: All tools included
+  - paragraph: Batch processing
+  - paragraph: Limited
+  - img "yes"
+  - img "yes"
+  - paragraph: Filesize per task
+  - paragraph: Limited
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: iLoveSign
+  - paragraph: Self Signed (SES)
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: Signature Request (SES)
+  - paragraph: Limited
+  - paragraph: Unlimited
+  - paragraph: Unlimited
+  - paragraph: Advanced eSignature (AES)
+  - img "No"
+  - img "Signatures"
+  - text: "5"
+  - img "Signatures"
+  - text: Custom
+  - paragraph: Signature management
+  - img "Yes"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Signed document custody
+  - img "Yes"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Audit Trail
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Notifications & reminders
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Custom branding
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Templates
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - paragraph: Multiple requests
+  - img "No"
+  - img "Yes"
+  - img "Yes"
+  - img "iLoveAPI"
+  - heading "Automate document processes with iLovePDF API" [level=3]
+  - paragraph: Millions of people trust iLovePDF to simplify their work with documents. Now, you can access the same tools and infrastructure, built to scale.
+  - link "See guides":
+    - /url: https://www.iloveapi.com
+  - heading "Join the millions of professionals trusting iLovePDF" [level=3]
+  - paragraph: "#1"
+  - paragraph: most-used online PDF software worldwide
+  - paragraph: "4.9"
+  - paragraph: average rating on Trustpilot
+  - paragraph: 16.5 million
+  - paragraph: documents processed every day
+  - paragraph: 82%
+  - paragraph: cost savings for businesses switching to iLovePDF
+  - heading "Your documents are in good hands" [level=2]
+  - paragraph: Enjoy all the tools you need to work efficiently with your digital documents while keeping your data safe and secure
+  - img "iso'"
+  - img "eIDAS'"
+  - img "gdpr'"
+  - img "iab"
+  - img "secure"
+  - img "digicert"
+  - heading "Frequently Asked Questions" [level=3]
+  - paragraph: Our support team answers these questions almost daily
+  - list:
+    - listitem: General Questions
+    - menuitem "What do I get with the Free Plan? The Free Plan gives you access to our core tools, perfect for light use. You can process a limited number of documents.":
+      - paragraph: What do I get with the Free Plan?
+      - paragraph: The Free Plan gives you access to our core tools, perfect for light use. You can process a limited number of documents.
+    - menuitem "Why should I upgrade to Premium? Premium unlocks unlimited document processing, works across web, mobile, and desktop, removes ads, and gives you priority support. It’s the full iLovePDF experience!":
+      - paragraph: Why should I upgrade to Premium?
+      - paragraph: Premium unlocks unlimited document processing, works across web, mobile, and desktop, removes ads, and gives you priority support. It’s the full iLovePDF experience!
+    - menuitem "Can I switch plans if my needs change? Absolutely. You’re always in control—upgrade, downgrade, or cancel anytime in your account settings.":
+      - paragraph: Can I switch plans if my needs change?
+      - paragraph: Absolutely. You’re always in control—upgrade, downgrade, or cancel anytime in your account settings.
+    - listitem: Billing & Payments
+    - menuitem "Can I share single billing for multiple accounts? Yes. You can put everyone's account on one credit card for centralized billing. Just enter the email addresses of your team members and your plan will automatically upgrade.":
+      - paragraph: Can I share single billing for multiple accounts?
+      - paragraph: Yes. You can put everyone's account on one credit card for centralized billing. Just enter the email addresses of your team members and your plan will automatically upgrade.
+    - menuitem "What payment methods do you accept? We accept card payments via Visa, MasterCard, and American Express. We also accept payments using PayPal or directly in the mobile app (using Apple Pay or Google Pay). For the Business plan, we offer additional methods, such as payment via Bank transfer.":
+      - paragraph: What payment methods do you accept?
+      - paragraph: We accept card payments via Visa, MasterCard, and American Express. We also accept payments using PayPal or directly in the mobile app (using Apple Pay or Google Pay). For the Business plan, we offer additional methods, such as payment via Bank transfer.
+    - menuitem "What if I need to change my plan partway through my contract? You can add and remove licenses as needed from your Account. In the same way, you can upgrade your subscription and we'll automatically adjust the pricing.":
+      - paragraph: What if I need to change my plan partway through my contract?
+      - paragraph: You can add and remove licenses as needed from your Account. In the same way, you can upgrade your subscription and we'll automatically adjust the pricing.
+    - menuitem "Can you invoice me? Yes, we issue a tax invoice on all paid plans. All prices include VAT. Depending on your location,VAT may be included directly, and in others VAT appears as 0% and is handled via the reverse-charge mechanism. To ensure your invoicing details appear on the invoice, please add them either before you subscribe or within 72 hours of the invoice being issued.":
+      - paragraph: Can you invoice me?
+      - paragraph:
+        - text: Yes, we issue a tax invoice on all paid plans. All prices include VAT. Depending on your location,VAT may be included directly, and in others VAT appears as 0% and is handled via the reverse-charge mechanism. To ensure your
+        - link "invoicing details":
+          - /url: /user/business
+        - text: appear on the invoice, please add them either before you subscribe or within 72 hours of the invoice being issued.
+    - listitem: Security & Technical Questions
+    - menuitem "Is my data safe with iLovePDF? Rest assured, your documents are fully encrypted and processed securely, adhering to international data protection regulations, including GDPR.":
+      - paragraph: Is my data safe with iLovePDF?
+      - paragraph: Rest assured, your documents are fully encrypted and processed securely, adhering to international data protection regulations, including GDPR.
+    - menuitem "Will iLovePDF work for my industry? iLovePDF caters to a wide range of professionals, including those in legal, educational, and business fields. Designed with versatility in mind, iLovePDF seamlessly integrates into any workflow, providing flexible solutions for all users.":
+      - paragraph: Will iLovePDF work for my industry?
+      - paragraph: iLovePDF caters to a wide range of professionals, including those in legal, educational, and business fields. Designed with versatility in mind, iLovePDF seamlessly integrates into any workflow, providing flexible solutions for all users.
+  - heading "Trusted by well known companies" [level=4]
+  - img "burberry"
+  - img "dior"
+  - img "hp"
+  - img "linkedin"
+  - img "nh"
+  - img "philips"
+  - img "nestle"
+  - img "luxotica"
+  - img "oracle"
+  - img "samsung"
+  - img "toyota"
+  - img "starbucks"
+  - img "burberry"
+  - img "dior"
+  - img "hp"
+  - img "linkedin"
+  - img "nh"
+  - img "philips"
+  - img "nestle"
+  - img "luxotica"
+  - img "oracle"
+  - img "samsung"
+  - img "toyota"
+  - img "starbucks"
+  - img "Become Premium"
+  - heading "Empower your business with iLovePDF" [level=2]
+  - paragraph: With iLovePDF, you can streamline your document workflows, speed up approvals, and work smarter as a team. It's document management made easy.
+  - link "Contact Sales":
+    - /url: /contact?reason=business
+  - text: Product
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Features":
+        - /url: /features
+    - listitem:
+      - link "Pricing":
+        - /url: /pricing
+    - listitem:
+      - link "Tools":
+        - /url: /help/documentation
+    - listitem:
+      - link "FAQ":
+        - /url: /help/faq
+  - text: Resources
+  - list:
+    - listitem:
+      - link "iLovePDF Desktop":
+        - /url: /desktop
+    - listitem:
+      - link "iLovePDF Mobile":
+        - /url: /mobile
+    - listitem:
+      - link "iLoveSign":
+        - /url: https://www.ilovesign.com
+    - listitem:
+      - link "iLoveAPI":
+        - /url: https://www.iloveapi.com
+    - listitem:
+      - link "iLoveIMG":
+        - /url: https://www.iloveimg.com/
+  - text: Solutions
+  - list:
+    - listitem:
+      - link "Business":
+        - /url: /business
+    - listitem:
+      - link "Education":
+        - /url: /education
+  - text: Legal
+  - list:
+    - listitem:
+      - link "Security":
+        - /url: /help/security
+    - listitem:
+      - link "Privacy policy":
+        - /url: /help/privacy
+    - listitem:
+      - link "Terms & conditions":
+        - /url: /help/terms
+    - listitem:
+      - link "Cookies":
+        - /url: /help/cookies
+  - text: Company
+  - list:
+    - listitem:
+      - link "About us":
+        - /url: /help/about
+    - listitem:
+      - link "Contact us":
+        - /url: /contact
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem:
+      - link "Press":
+        - /url: /press
+  - list:
+    - listitem:
+      - link "Google Play":
+        - /url: https://play.google.com/store/apps/details?id=com.ilovepdf.www
+        - img "Google Play"
+    - listitem:
+      - link "App Store":
+        - /url: https://itunes.apple.com/app/ilovepdf/id1207332399?mt=8
+        - img "App Store"
+    - listitem:
+      - link "Mac Store":
+        - /url: https://apps.apple.com/app/ilovepdf-pdf-editor-scan/id1207332399?mt=8
+        - img "Mac Store"
+    - listitem:
+      - link "Microsoft Store":
+        - /url: ms-windows-store://pdp/?productid=9NLVZBZ2WZ28
+        - img "Microsoft Store"
+  - text: English
+  - link "Follow us on Twitter!":
+    - /url: https://twitter.com/ilovepdf_com
+  - link "Like us on Facebook!":
+    - /url: https://www.facebook.com/ilovepdfcom-238648522858564/
+  - link "LinkedIn - ilovepdf":
+    - /url: https://www.linkedin.com/company/ilovepdf/
+  - link "Instagram - ilovepdf_official":
+    - /url: https://www.instagram.com/ilovepdf_official/
+  - link "TikTok - ilovepdf_official":
+    - /url: https://www.tiktok.com/@ilovepdf_official
+  - link "Join the community on Reddit":
+    - /url: https://www.reddit.com/r/ilovepdf
+  - text: © iLovePDF 2026 ® - Your PDF Editor

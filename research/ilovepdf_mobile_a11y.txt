@@ -1,0 +1,311 @@
+- document:
+  - banner:
+    - navigation:
+      - link "iLovePDF":
+        - /url: /
+        - img "iLovePDF"
+      - list:
+        - listitem
+  - heading "Every tool you need to work with PDFs in one place" [level=1]
+  - heading "Every tool you need to use PDFs, at your fingertips. All are 100% FREE and easy to use! Merge, split, compress, convert, rotate, unlock and watermark PDFs with just a few clicks." [level=2]
+  - text: All Workflows Organize PDF Optimize PDF Convert PDF Edit PDF PDF Security PDF Intelligence
+  - link "Merge PDF Combine PDFs in the order you want with the easiest PDF merger available.":
+    - /url: /merge_pdf
+    - img
+    - heading "Merge PDF" [level=3]
+    - paragraph: Combine PDFs in the order you want with the easiest PDF merger available.
+  - link "Split PDF Separate one page or a whole set for easy conversion into independent PDF files.":
+    - /url: /split_pdf
+    - img
+    - heading "Split PDF" [level=3]
+    - paragraph: Separate one page or a whole set for easy conversion into independent PDF files.
+  - link "Compress PDF Reduce file size while optimizing for maximal PDF quality.":
+    - /url: /compress_pdf
+    - img
+    - heading "Compress PDF" [level=3]
+    - paragraph: Reduce file size while optimizing for maximal PDF quality.
+  - link "PDF to Word Easily convert your PDF files into easy to edit DOC and DOCX documents. The converted WORD document is almost 100% accurate.":
+    - /url: /pdf_to_word
+    - img
+    - heading "PDF to Word" [level=3]
+    - paragraph: Easily convert your PDF files into easy to edit DOC and DOCX documents. The converted WORD document is almost 100% accurate.
+  - link "PDF to PowerPoint Turn your PDF files into easy to edit PPT and PPTX slideshows.":
+    - /url: /pdf_to_powerpoint
+    - img
+    - heading "PDF to PowerPoint" [level=3]
+    - paragraph: Turn your PDF files into easy to edit PPT and PPTX slideshows.
+  - link "PDF to Excel Pull data straight from PDFs into Excel spreadsheets in a few short seconds.":
+    - /url: /pdf_to_excel
+    - img
+    - heading "PDF to Excel" [level=3]
+    - paragraph: Pull data straight from PDFs into Excel spreadsheets in a few short seconds.
+  - link "Word to PDF Make DOC and DOCX files easy to read by converting them to PDF.":
+    - /url: /word_to_pdf
+    - img
+    - heading "Word to PDF" [level=3]
+    - paragraph: Make DOC and DOCX files easy to read by converting them to PDF.
+  - link "PowerPoint to PDF Make PPT and PPTX slideshows easy to view by converting them to PDF.":
+    - /url: /powerpoint_to_pdf
+    - img
+    - heading "PowerPoint to PDF" [level=3]
+    - paragraph: Make PPT and PPTX slideshows easy to view by converting them to PDF.
+  - link "Excel to PDF Make EXCEL spreadsheets easy to read by converting them to PDF.":
+    - /url: /excel_to_pdf
+    - img
+    - heading "Excel to PDF" [level=3]
+    - paragraph: Make EXCEL spreadsheets easy to read by converting them to PDF.
+  - link "Edit PDF Add text, images, shapes or freehand annotations to a PDF document. Edit the size, font, and color of the added content.":
+    - /url: /edit-pdf
+    - img
+    - heading "Edit PDF" [level=3]
+    - paragraph: Add text, images, shapes or freehand annotations to a PDF document. Edit the size, font, and color of the added content.
+  - link "PDF to JPG Convert each PDF page into a JPG or extract all images contained in a PDF.":
+    - /url: /pdf_to_jpg
+    - img
+    - heading "PDF to JPG" [level=3]
+    - paragraph: Convert each PDF page into a JPG or extract all images contained in a PDF.
+  - link "JPG to PDF Convert JPG images to PDF in seconds. Easily adjust orientation and margins.":
+    - /url: /jpg_to_pdf
+    - img
+    - heading "JPG to PDF" [level=3]
+    - paragraph: Convert JPG images to PDF in seconds. Easily adjust orientation and margins.
+  - link "Sign PDF Sign yourself or request electronic signatures from others.":
+    - /url: /sign-pdf
+    - img
+    - heading "Sign PDF" [level=3]
+    - paragraph: Sign yourself or request electronic signatures from others.
+  - link "Watermark Stamp an image or text over your PDF in seconds. Choose the typography, transparency and position.":
+    - /url: /pdf_add_watermark
+    - img
+    - heading "Watermark" [level=3]
+    - paragraph: Stamp an image or text over your PDF in seconds. Choose the typography, transparency and position.
+  - link "Rotate PDF Rotate your PDFs the way you need them. You can even rotate multiple PDFs at once!":
+    - /url: /rotate_pdf
+    - img
+    - heading "Rotate PDF" [level=3]
+    - paragraph: Rotate your PDFs the way you need them. You can even rotate multiple PDFs at once!
+  - link "HTML to PDF Convert webpages in HTML to PDF. Copy and paste the URL of the page you want and convert it to PDF with a click.":
+    - /url: /html-to-pdf
+    - img
+    - heading "HTML to PDF" [level=3]
+    - paragraph: Convert webpages in HTML to PDF. Copy and paste the URL of the page you want and convert it to PDF with a click.
+  - link "Unlock PDF Remove PDF password security, giving you the freedom to use your PDFs as you want.":
+    - /url: /unlock_pdf
+    - img
+    - heading "Unlock PDF" [level=3]
+    - paragraph: Remove PDF password security, giving you the freedom to use your PDFs as you want.
+  - link "Protect PDF Protect PDF files with a password. Encrypt PDF documents to prevent unauthorized access.":
+    - /url: /protect-pdf
+    - img
+    - heading "Protect PDF" [level=3]
+    - paragraph: Protect PDF files with a password. Encrypt PDF documents to prevent unauthorized access.
+  - link "Organize PDF Sort pages of your PDF file however you like. Delete PDF pages or add PDF pages to your document at your convenience.":
+    - /url: /organize-pdf
+    - img
+    - heading "Organize PDF" [level=3]
+    - paragraph: Sort pages of your PDF file however you like. Delete PDF pages or add PDF pages to your document at your convenience.
+  - link "PDF to PDF/A Transform your PDF to PDF/A, the ISO-standardized version of PDF for long-term archiving. Your PDF will preserve formatting when accessed in the future.":
+    - /url: /convert-pdf-to-pdfa
+    - img
+    - heading "PDF to PDF/A" [level=3]
+    - paragraph: Transform your PDF to PDF/A, the ISO-standardized version of PDF for long-term archiving. Your PDF will preserve formatting when accessed in the future.
+  - link "Repair PDF Repair a damaged PDF and recover data from corrupt PDF. Fix PDF files with our Repair tool.":
+    - /url: /repair-pdf
+    - img
+    - heading "Repair PDF" [level=3]
+    - paragraph: Repair a damaged PDF and recover data from corrupt PDF. Fix PDF files with our Repair tool.
+  - link "Page numbers Add page numbers into PDFs with ease. Choose your positions, dimensions, typography.":
+    - /url: /add_pdf_page_number
+    - img
+    - heading "Page numbers" [level=3]
+    - paragraph: Add page numbers into PDFs with ease. Choose your positions, dimensions, typography.
+  - link "Scan to PDF Capture document scans from your mobile device and send them instantly to your browser.":
+    - /url: /scan-pdf
+    - img
+    - heading "Scan to PDF" [level=3]
+    - paragraph: Capture document scans from your mobile device and send them instantly to your browser.
+  - link "OCR PDF Easily convert scanned PDF into searchable and selectable documents.":
+    - /url: /ocr-pdf
+    - img
+    - heading "OCR PDF" [level=3]
+    - paragraph: Easily convert scanned PDF into searchable and selectable documents.
+  - link "Compare PDF Show a side-by-side document comparison and easily spot changes between different file versions.":
+    - /url: /compare-pdf
+    - img
+    - heading "Compare PDF" [level=3]
+    - paragraph: Show a side-by-side document comparison and easily spot changes between different file versions.
+  - link "Redact PDF Redact text and graphics to permanently remove sensitive information from a PDF.":
+    - /url: /redact-pdf
+    - img
+    - heading "Redact PDF" [level=3]
+    - paragraph: Redact text and graphics to permanently remove sensitive information from a PDF.
+  - link "Crop PDF Crop margins of PDF documents or select specific areas, then apply the changes to one page or the whole document.":
+    - /url: /crop-pdf
+    - img
+    - heading "Crop PDF" [level=3]
+    - paragraph: Crop margins of PDF documents or select specific areas, then apply the changes to one page or the whole document.
+  - link "PDF Forms Detect form fields automatically, create interactive fillable PDFs, or fill PDF forms yourself. Add text fields, checkboxes, multiple choice fields, and lists.":
+    - /url: /pdf-forms
+    - img
+    - heading "PDF Forms" [level=3]
+    - paragraph: Detect form fields automatically, create interactive fillable PDFs, or fill PDF forms yourself. Add text fields, checkboxes, multiple choice fields, and lists.
+  - link "AI Summarizer Quickly generate concise summaries from articles, paragraphs, and essays, providing clear and precise key points in seconds.":
+    - /url: /pdf-summarize
+    - img
+    - heading "AI Summarizer" [level=3]
+    - paragraph: Quickly generate concise summaries from articles, paragraphs, and essays, providing clear and precise key points in seconds.
+  - link "Translate PDF Easily translate PDF files powered by AI. Keep fonts, layout, and formatting perfectly intact.":
+    - /url: /translate-pdf
+    - img
+    - heading "Translate PDF" [level=3]
+    - paragraph: Easily translate PDF files powered by AI. Keep fonts, layout, and formatting perfectly intact.
+  - link "PDF to Markdown Easily turn PDFs into Markdown files. Perfect for notes, docs, and LLMs. Headings, tables, lists, and links preserved automatically.":
+    - /url: /pdf-to-markdown
+    - img
+    - heading "PDF to Markdown" [level=3]
+    - paragraph: Easily turn PDFs into Markdown files. Perfect for notes, docs, and LLMs. Headings, tables, lists, and links preserved automatically.
+  - link "Create a workflow Create custom workflows with your favorite tools, automate tasks, and reuse them anytime. Create workflow":
+    - /url: /user/workflows
+    - heading "Create a workflow" [level=3]
+    - paragraph: Create custom workflows with your favorite tools, automate tasks, and reuse them anytime.
+    - text: Create workflow
+    - img
+  - text: Work your way
+  - link "Work offline with Desktop Work offline with Desktop Batch edit and manage documents locally, with no internet and no limits.":
+    - /url: /desktop
+    - img "Work offline with Desktop"
+    - text: Work offline with Desktop
+    - paragraph: Batch edit and manage documents locally, with no internet and no limits.
+    - img
+  - link "On-the-go with Mobile On-the-go with Mobile Your favorite tools, right in your pocket. Keep working on your projects anytime, anywhere.":
+    - /url: /mobile
+    - img "On-the-go with Mobile"
+    - text: On-the-go with Mobile
+    - paragraph: Your favorite tools, right in your pocket. Keep working on your projects anytime, anywhere.
+    - img
+  - link "Built for business Built for business Automate document management, onboard teams easily, and scale with flexible plans.":
+    - /url: /business
+    - img "Built for business"
+    - text: Built for business
+    - paragraph: Automate document management, onboard teams easily, and scale with flexible plans.
+    - img
+  - heading "Get more with Premium" [level=2]
+  - list:
+    - listitem: Get full access to iLovePDF and work offline with Desktop
+    - listitem: Edit PDFs, get advanced OCR for scanned documents and request secure e-Signatures
+    - listitem: Connect tools and create custom workflows
+  - link "Get Premium":
+    - /url: /user/premium
+    - img
+    - text: Get Premium
+  - img "iLoveIMG"
+  - heading "Image editing made simple with iLoveIMG" [level=2]
+  - paragraph: Experience the speed, simplicity, and security you expect from iLovePDF tailored for image editing. Compress, resize, and enhance your images with AI.
+  - link "Go to iLoveIMG":
+    - /url: https://www.iloveimg.com/
+  - text: The PDF software trusted by millions of users
+  - paragraph: iLovePDF is your number one web app for editing PDF with ease. Enjoy all the tools you need to work efficiently with your digital documents while keeping your data safe and secure.
+  - img "ISO27001 certified"
+  - img "Secure connection Https"
+  - img "PDF Association"
+  - text: Product
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "Features":
+        - /url: /features
+    - listitem:
+      - link "Pricing":
+        - /url: /pricing
+    - listitem:
+      - link "Tools":
+        - /url: /help/documentation
+    - listitem:
+      - link "FAQ":
+        - /url: /help/faq
+  - text: Resources
+  - list:
+    - listitem:
+      - link "iLovePDF Desktop":
+        - /url: /desktop
+    - listitem:
+      - link "iLovePDF Mobile":
+        - /url: /mobile
+    - listitem:
+      - link "iLoveSign":
+        - /url: https://www.ilovesign.com
+    - listitem:
+      - link "iLoveAPI":
+        - /url: https://www.iloveapi.com
+    - listitem:
+      - link "iLoveIMG":
+        - /url: https://www.iloveimg.com/
+  - text: Solutions
+  - list:
+    - listitem:
+      - link "Business":
+        - /url: /business
+    - listitem:
+      - link "Education":
+        - /url: /education
+  - text: Legal
+  - list:
+    - listitem:
+      - link "Security":
+        - /url: /help/security
+    - listitem:
+      - link "Privacy policy":
+        - /url: /help/privacy
+    - listitem:
+      - link "Terms & conditions":
+        - /url: /help/terms
+    - listitem:
+      - link "Cookies":
+        - /url: /help/cookies
+  - text: Company
+  - list:
+    - listitem:
+      - link "About us":
+        - /url: /help/about
+    - listitem:
+      - link "Contact us":
+        - /url: /contact
+    - listitem:
+      - link "Blog":
+        - /url: /blog
+    - listitem:
+      - link "Press":
+        - /url: /press
+  - list:
+    - listitem:
+      - link "Google Play":
+        - /url: https://play.google.com/store/apps/details?id=com.ilovepdf.www
+        - img "Google Play"
+    - listitem:
+      - link "App Store":
+        - /url: https://itunes.apple.com/app/ilovepdf/id1207332399?mt=8
+        - img "App Store"
+    - listitem:
+      - link "Mac Store":
+        - /url: https://apps.apple.com/app/ilovepdf-pdf-editor-scan/id1207332399?mt=8
+        - img "Mac Store"
+    - listitem:
+      - link "Microsoft Store":
+        - /url: ms-windows-store://pdp/?productid=9NLVZBZ2WZ28
+        - img "Microsoft Store"
+  - text: English
+  - link "Follow us on Twitter!":
+    - /url: https://twitter.com/ilovepdf_com
+  - link "Like us on Facebook!":
+    - /url: https://www.facebook.com/ilovepdfcom-238648522858564/
+  - link "LinkedIn - ilovepdf":
+    - /url: https://www.linkedin.com/company/ilovepdf/
+  - link "Instagram - ilovepdf_official":
+    - /url: https://www.instagram.com/ilovepdf_official/
+  - link "TikTok - ilovepdf_official":
+    - /url: https://www.tiktok.com/@ilovepdf_official
+  - link "Join the community on Reddit":
+    - /url: https://www.reddit.com/r/ilovepdf
+  - text: © iLovePDF 2026 ® - Your PDF Editor

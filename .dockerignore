@@ -1,0 +1,32 @@
+# Git & Version Control
+.git
+.gitignore
+.github
+
+# Virtual Environments & Python Cache
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+.pytest_cache
+
+# Node & Next.js Build Artifacts
+apps/web/node_modules
+apps/web/.next
+apps/web/npm-debug.log*
+
+# Documentation & Research
+documentation
+research
+*.md
+*.png
+*.pdf
+
+# Local Environment & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

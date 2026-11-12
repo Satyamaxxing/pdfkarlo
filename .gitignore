@@ -1,0 +1,63 @@
+# Environment & Local Secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python Virtual Environments & Cache
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Cloudflare Pages / Wrangler
+.wrangler/
+.wrangler
+
+# Storage & Temporary Files
+tmp/
+/tmp/
+*.tmp
+local_storage/
+minio_data/
+postgres_data/
+redis_data/
+test_fixtures_fidelity/client_outputs/
+apps/test_fixtures_fidelity/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Specific
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE & Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

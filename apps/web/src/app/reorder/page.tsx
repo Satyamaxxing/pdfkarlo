@@ -1,0 +1,507 @@
+"use client";
+
+import React, { useState, useMemo } from "react";
+import Link from "next/link";
+import { FileUploadZone } from "@/components/FileUploadZone";
+import { JobProgressBar } from "@/components/JobProgressBar";
+import { WorkspaceHeader } from "@/components/workspace/WorkspaceHeader";
+import { PdfPageGrid } from "@/components/workspace/PdfPageGrid";
+import { PdfThumbnailCard } from "@/components/workspace/PdfThumbnailCard";
+import { PagePreviewModal } from "@/components/workspace/PagePreviewModal";
+import {
+  ArrowUpDown,
+  ArrowLeft,
+  CheckCircle2,
+  AlertCircle,
+  Download,
+  RotateCcw,
+  ShieldCheck,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  RefreshCw,
+  ListOrdered,
+  Lock,
+} from "lucide-react";
+import { ClientPdfService } from "@/lib/pdf/clientPdfService";
+import { ProcessedOutput } from "@/lib/pdf/types";
+
+type ReorderState = "IDLE" | "FILE_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
+
+function formatBytes(bytes: number): string {
+  if (bytes === 0) return "0 Bytes";
+  const k = 1024;
+  const sizes = ["Bytes", "KB", "MB", "GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
+}
+
+export default function ReorderPdfPage() {
+  const [state, setState] = useState<ReorderState>("IDLE");
+  const [file, setFile] = useState<File | null>(null);
+  const [fileBuffer, setFileBuffer] = useState<ArrayBuffer | null>(null);
+  const [pageCount, setPageCount] = useState<number | null>(null);
+  const [isDetectingPages, setIsDetectingPages] = useState<boolean>(false);
+
+  // Ordered list of original 1-based page numbers: e.g. [1, 2, 3, 4]
+  const [pageOrder, setPageOrder] = useState<number[]>([]);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  // High-res preview modal state
+  const [zoomPage, setZoomPage] = useState<number | null>(null);
+
+  // Progress & Execution state
+  const [progress, setProgress] = useState(0);
+  const [statusText, setStatusText] = useState("");
+  const [processedOutput, setProcessedOutput] = useState<ProcessedOutput | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleFileSelected = async (selected: File[]) => {
+    if (!selected || selected.length === 0) return;
+    const target = selected[0];
+    setFile(target);
+    setState("FILE_SELECTED");
+    setIsDetectingPages(true);
+    setErrorMessage("");
+
+    try {
+      const buffer = await target.arrayBuffer();
+      setFileBuffer(buffer);
+
+      const inspection = await ClientPdfService.inspectFile(target);
+      setIsDetectingPages(false);
+      setPageCount(inspection.pageCount);
+
+      const initialOrder = Array.from({ length: inspection.pageCount }, (_, i) => i + 1);
+      setPageOrder(initialOrder);
+    } catch (err: unknown) {
+      setIsDetectingPages(false);
+      setState("ERROR");
+      setErrorMessage(err instanceof Error ? err.message : "Failed to inspect PDF.");
+    }
+  };
+
+  const handleReset = () => {
+    setFile(null);
+    setFileBuffer(null);
+    setPageCount(null);
+    setPageOrder([]);
+    setDraggedIndex(null);
+    setZoomPage(null);
+    setProgress(0);
+    setProcessedOutput(null);
+    setErrorMessage("");
+    setState("IDLE");
+  };
+
+  // Move page to beginning (position 0)
+  const moveToBeginning = (currentIndex: number) => {
+    if (currentIndex === 0) return;
+    const updated = [...pageOrder];
+    const [moved] = updated.splice(currentIndex, 1);
+    updated.unshift(moved);
+    setPageOrder(updated);
+  };
+
+  // Move page to end (last position)
+  const moveToEnd = (currentIndex: number) => {
+    if (currentIndex === pageOrder.length - 1) return;
+    const updated = [...pageOrder];
+    const [moved] = updated.splice(currentIndex, 1);
+    updated.push(moved);
+    setPageOrder(updated);
+  };
+
+  // Move page left (swap with currentIndex - 1)
+  const moveLeft = (currentIndex: number) => {
+    if (currentIndex === 0) return;
+    const updated = [...pageOrder];
+    const temp = updated[currentIndex];
+    updated[currentIndex] = updated[currentIndex - 1];
+    updated[currentIndex - 1] = temp;
+    setPageOrder(updated);
+  };
+
+  // Move page right (swap with currentIndex + 1)
+  const moveRight = (currentIndex: number) => {
+    if (currentIndex >= pageOrder.length - 1) return;
+    const updated = [...pageOrder];
+    const temp = updated[currentIndex];
+    updated[currentIndex] = updated[currentIndex + 1];
+    updated[currentIndex + 1] = temp;
+    setPageOrder(updated);
+  };
+
+  // Reverse all pages
+  const reverseOrder = () => {
+    setPageOrder([...pageOrder].reverse());
+  };
+
+  // Reset to original natural order [1..N]
+  const resetToOriginal = () => {
+    const total = pageOrder.length;
+    setPageOrder(Array.from({ length: total }, (_, i) => i + 1));
+  };
+
+  // Drag-and-drop handlers
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleDragOver = (targetIndex: number) => {
+    if (draggedIndex === null || draggedIndex === targetIndex) return;
+
+    const updated = [...pageOrder];
+    const [moved] = updated.splice(draggedIndex, 1);
+    updated.splice(targetIndex, 0, moved);
+    setDraggedIndex(targetIndex);
+    setPageOrder(updated);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+  };
+
+  // Check if order was changed from natural 1..N
+  const isOrderChanged = useMemo(() => {
+    return pageOrder.some((p, idx) => p !== idx + 1);
+  }, [pageOrder]);
+
+  const handleSubmit = async () => {
+    if (!file) return;
+
+    if (!isOrderChanged) {
+      setErrorMessage("Please reorder at least one page before submitting.");
+      return;
+    }
+
+    setState("PROCESSING");
+    setProgress(10);
+    setStatusText("Reordering pages locally in browser...");
+    setErrorMessage("");
+
+    try {
+      const result = await ClientPdfService.reorder(
+        file,
+        pageOrder,
+        `reordered_${file.name}`,
+        (percent, status) => {
+          setProgress(percent);
+          setStatusText(status);
+        }
+      );
+
+      setProcessedOutput(result);
+      setProgress(100);
+      setState("SUCCESS");
+    } catch (err: unknown) {
+      setErrorMessage(err instanceof Error ? err.message : "Failed to reorder PDF document.");
+      setState("ERROR");
+    }
+  };
+
+  const handleDownload = () => {
+    if (processedOutput) {
+      ClientPdfService.triggerDownload(processedOutput);
+    }
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* Header breadcrumb */}
+      <div className="flex items-center justify-between mb-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to All Tools</span>
+        </Link>
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+          <ShieldCheck className="w-3.5 h-3.5" /> 100% In-Browser Privacy
+        </span>
+      </div>
+
+      {/* Tool Title */}
+      <div className="text-center max-w-xl mx-auto mb-10">
+        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-600 flex items-center justify-center text-white shadow-md mb-3">
+          <ArrowUpDown className="w-6 h-6" />
+        </div>
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          Reorder PDF Pages
+        </h1>
+        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+          Sort, rearrange and organize your PDF pages visually with drag-and-drop or position buttons locally in your browser.
+        </p>
+      </div>
+
+      {/* Step 1: Upload Zone */}
+      {state === "IDLE" && (
+        <FileUploadZone
+          onFilesSelected={handleFileSelected}
+          multiple={false}
+          maxFiles={1}
+          label="Select a PDF file to reorder"
+          sublabel="or drop a PDF document here"
+        />
+      )}
+
+      {/* Step 2: Interactive Page Reorder Canvas */}
+      {state === "FILE_SELECTED" && file && (
+        <div className="space-y-6">
+          <WorkspaceHeader
+            filename={file.name}
+            fileSizeBytes={file.size}
+            pageCount={pageCount}
+            isDetecting={isDetectingPages}
+            onReset={handleReset}
+            toolName="Reorder Tool"
+            toolIcon={<ArrowUpDown className="w-5 h-5 text-teal-600 dark:text-teal-400" />}
+          />
+
+          <PdfPageGrid
+            totalPages={pageOrder.length}
+            toolbarLeft={
+              <>
+                <button
+                  type="button"
+                  onClick={reverseOrder}
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+                  title="Reverse page sequence"
+                >
+                  <RefreshCw className="w-3.5 h-3.5 text-teal-600" />
+                  <span>Reverse Order</span>
+                </button>
+                {isOrderChanged && (
+                  <button
+                    type="button"
+                    onClick={resetToOriginal}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+                    title="Reset to original sequence"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Reset to Original</span>
+                  </button>
+                )}
+              </>
+            }
+            toolbarRight={
+              isOrderChanged ? (
+                <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 px-2.5 py-1 rounded-lg bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800">
+                  Custom order active
+                </span>
+              ) : null
+            }
+            infoBanner={
+              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 px-1">
+                <ListOrdered className="w-4 h-4 text-teal-500 flex-shrink-0" />
+                <span>
+                  Drag thumbnails or use arrow buttons to rearrange pages. Click the zoom icon on any card to preview full size.
+                </span>
+              </div>
+            }
+          >
+            {pageOrder.map((origPageNum, newIndex) => {
+              const isFirst = newIndex === 0;
+              const isLast = newIndex === pageOrder.length - 1;
+              const hasMoved = origPageNum !== newIndex + 1;
+
+              return (
+                <PdfThumbnailCard
+                  key={`${origPageNum}-${newIndex}`}
+                  docId={file.name}
+                  buffer={fileBuffer}
+                  pageNumber={origPageNum}
+                  displayIndex={newIndex + 1}
+                  isDraggable={true}
+                  dragIndex={newIndex}
+                  isDragging={draggedIndex === newIndex}
+                  onDragStart={(_e, idx) => handleDragStart(idx)}
+                  onDragOver={(_e, idx) => handleDragOver(idx)}
+                  onDragEnd={handleDragEnd}
+                  onOpenZoom={(p) => setZoomPage(p)}
+                  badgeSlot={
+                    hasMoved ? (
+                      <span className="px-1.5 py-0.5 rounded bg-teal-600 text-white text-[9px] font-bold">
+                        Moved
+                      </span>
+                    ) : null
+                  }
+                  actionsSlot={
+                    <div className="flex items-center justify-between gap-1 w-full">
+                      <button
+                        type="button"
+                        disabled={isFirst}
+                        onClick={() => moveToBeginning(newIndex)}
+                        className="p-1 rounded text-slate-400 hover:text-teal-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                        title="Move to first position"
+                        aria-label={`Move page ${origPageNum} to first position`}
+                      >
+                        <ChevronsLeft className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={isFirst}
+                        onClick={() => moveLeft(newIndex)}
+                        className="p-1 rounded text-slate-400 hover:text-teal-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                        title="Move left"
+                        aria-label={`Move page ${origPageNum} left`}
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={isLast}
+                        onClick={() => moveRight(newIndex)}
+                        className="p-1 rounded text-slate-400 hover:text-teal-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                        title="Move right"
+                        aria-label={`Move page ${origPageNum} right`}
+                      >
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={isLast}
+                        onClick={() => moveToEnd(newIndex)}
+                        className="p-1 rounded text-slate-400 hover:text-teal-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                        title="Move to last position"
+                        aria-label={`Move page ${origPageNum} to last position`}
+                      >
+                        <ChevronsRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  }
+                />
+              );
+            })}
+          </PdfPageGrid>
+
+          {/* Action Footer */}
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <button
+              type="button"
+              onClick={handleReset}
+              className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              disabled={!isOrderChanged}
+              onClick={handleSubmit}
+              className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-teal-600/20 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <ArrowUpDown className="w-4 h-4" />
+              <span>Apply Reorder & Save PDF</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 3: Progress State */}
+      {state === "PROCESSING" && (
+        <JobProgressBar progress={progress} statusText={statusText} />
+      )}
+
+      {/* Step 4: Success State */}
+      {state === "SUCCESS" && processedOutput && (
+        <div className="max-w-xl mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+            <CheckCircle2 className="w-8 h-8" />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              PDF Reordered Successfully!
+            </h2>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+              New page sequence saved cleanly. Processed locally in your browser.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-100 dark:border-slate-800 text-left text-xs">
+            <div className="flex items-center justify-between">
+              <p className="font-semibold text-slate-900 dark:text-white">
+                {processedOutput.filename}
+              </p>
+              <span className="text-[11px] text-slate-400">
+                {formatBytes(processedOutput.fileSizeBytes)}
+              </span>
+            </div>
+            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" /> Ready for instant download
+            </p>
+          </div>
+
+          {/* Download button */}
+          <div className="flex flex-col gap-3">
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 shadow-lg shadow-teal-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download Reordered PDF</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleReset}
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reorder Another PDF</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 5: Error State */}
+      {state === "ERROR" && (
+        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-rose-200 dark:border-rose-950 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 dark:bg-rose-950/80 flex items-center justify-center text-rose-600 dark:text-rose-400">
+            {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt") ? (
+              <Lock className="w-8 h-8" />
+            ) : (
+              <AlertCircle className="w-8 h-8" />
+            )}
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt")
+                ? "Password-Protected PDF"
+                : "Reorder Error"}
+            </h2>
+            <p className="mt-2 text-xs text-rose-600 dark:text-rose-400 font-medium">
+              {errorMessage}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleReset}
+            className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 transition-colors cursor-pointer"
+          >
+            Try Again with Another File
+          </button>
+        </div>
+      )}
+
+      {/* High-Resolution Full-Page Preview Modal */}
+      {fileBuffer && file && (
+        <PagePreviewModal
+          isOpen={zoomPage !== null}
+          onClose={() => setZoomPage(null)}
+          docId={file.name}
+          buffer={fileBuffer}
+          pageNumber={zoomPage || 1}
+          totalPages={pageCount || pageOrder.length || 1}
+          onNavigate={(newPage) => setZoomPage(newPage)}
+          rotation={0}
+        />
+      )}
+    </div>
+  );
+}

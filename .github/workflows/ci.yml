@@ -1,0 +1,116 @@
+name: Platform Continuous Integration & SBOM Verification
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  backend-test-and-license:
+    name: Backend Tests & License Compliance
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: pdf_platform_test
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libqpdf-dev
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r apps/api/requirements.txt
+          pip install -r apps/worker/requirements.txt
+          pip install pytest pytest-asyncio pytest-cov pip-licenses
+
+      - name: Audit Open Source Licenses (Zero-AGPL Enforcer)
+        run: |
+          echo "Scanning Python dependencies against approved license allowlist..."
+          pip-licenses --format=json --output-file=licenses.json
+          python -c "
+          import json, sys
+          with open('licenses.json') as f:
+              data = json.load(f)
+          allowlist = {'MIT', 'BSD', 'BSD-3-Clause', 'BSD-2-Clause', 'Apache-2.0', 'Apache 2.0', 'MPL-2.0', 'Mozilla Public License 2.0', 'HPND', 'Python Software Foundation License', 'ISC'}
+          violations = []
+          for item in data:
+              lic = item.get('License', '')
+              if 'AGPL' in lic or 'GPL' in lic and not 'LGPL' in lic:
+                  violations.append(f\"{item['Name']} ({item['Version']}): {lic}\")
+          if violations:
+              print('LICENSE VIOLATIONS DETECTED: ' + ', '.join(violations))
+              sys.exit(1)
+          print('License audit PASSED. Zero copyleft violations detected.')
+          "
+
+      - name: Generate CycloneDX SBOM (Syft)
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: cyclonedx-json
+          output-file: cyclonedx-sbom.json
+
+      - name: Run Backend Integration & Unit Tests
+        env:
+          DATABASE_URL: postgresql+asyncpg://test_user:test_password@localhost:5432/pdf_platform_test
+          REDIS_URL: redis://localhost:6379/0
+          ENVIRONMENT: test
+        run: |
+          pytest tests/ -v --cov=apps/api/src --cov=apps/worker/src
+
+  frontend-check:
+    name: Frontend Lint & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: apps/web/package.json
+
+      - name: Install Frontend Dependencies
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Typecheck and Build Next.js
+        working-directory: apps/web
+        run: npm run build

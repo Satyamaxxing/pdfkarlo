@@ -1,0 +1,11 @@
+celery>=5.4.0
+redis>=5.2.0
+sqlalchemy>=2.0.36
+asyncpg>=0.30.0
+psycopg2-binary>=2.9.9
+boto3>=1.35.0
+pydantic>=2.10.0
+structlog>=24.4.0
+pikepdf>=10.0.0
+pillow>=10.0.0
+# Note: pypdfium2 will be wired during Sprint 4
