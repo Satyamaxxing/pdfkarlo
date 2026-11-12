@@ -1,17 +1,12 @@
 import React from "react";
 import { ToolGrid } from "@/components/ToolGrid";
-import { ShieldCheck, Zap, Cpu, Code2 } from "lucide-react";
+import { ShieldCheck, Cpu, Code2 } from "lucide-react";
 
 export default function HomePage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero Section */}
       <div className="text-center py-12 lg:py-16">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-100/80 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 mb-6">
-          <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-          <span>Independently Built • Fast • 100% In-Browser</span>
-        </div>
-        
         <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-4xl mx-auto">
           Every tool you need to work with PDFs, in one place.
         </h1>

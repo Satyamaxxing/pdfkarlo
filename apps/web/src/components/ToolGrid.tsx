@@ -72,16 +72,7 @@ const ROADMAP_TOOLS = [
 
 export const ToolGrid: React.FC = () => {
   return (
-    <section id="tools" className="py-12">
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-          Core PDF Tools
-        </h2>
-        <p className="mt-3 text-base text-slate-600 dark:text-slate-400">
-          Fast, private, and client-side document manipulation. Your PDFs are processed locally in your browser and never uploaded to our servers.
-        </p>
-      </div>
-
+    <section id="tools" className="pb-12">
       {/* 5 Launch MVP Tools */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {LAUNCH_TOOLS.map((tool) => {
