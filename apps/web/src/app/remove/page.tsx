@@ -224,25 +224,25 @@ export default function RemovePdfPage() {
       <div className="flex items-center justify-between mb-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-orange-600 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to All Tools</span>
         </Link>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> 100% In-Browser Privacy
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
+          <ShieldCheck className="w-3.5 h-3.5 text-orange-600" /> 100% In-Browser Privacy
         </span>
       </div>
 
       {/* Feature Header */}
       <div className="text-center max-w-xl mx-auto mb-10">
-        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-red-500 to-rose-600 flex items-center justify-center text-white shadow-md mb-3">
+        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-red-500 to-orange-600 flex items-center justify-center text-white shadow-md mb-3">
           <Trash2 className="w-6 h-6" />
         </div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
           Remove PDF Pages
         </h1>
-        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-slate-600">
           Select and delete unwanted pages, blank sheets, or confidential sections from your document directly in your browser.
         </p>
       </div>
@@ -268,7 +268,7 @@ export default function RemovePdfPage() {
             isDetecting={isDetectingPages}
             onReset={handleReset}
             toolName="Remove Tool"
-            toolIcon={<Trash2 className="w-5 h-5 text-rose-600 dark:text-rose-400" />}
+            toolIcon={<Trash2 className="w-5 h-5 text-rose-600" />}
           />
 
           <PdfPageGrid
@@ -279,7 +279,7 @@ export default function RemovePdfPage() {
                 <button
                   type="button"
                   onClick={selectAll}
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
                   title="Mark all pages for deletion"
                 >
                   <CheckSquare className="w-3.5 h-3.5 text-rose-500" />
@@ -288,7 +288,7 @@ export default function RemovePdfPage() {
                 <button
                   type="button"
                   onClick={deselectAll}
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
                   title="Clear all page selections"
                 >
                   <Square className="w-3.5 h-3.5 text-slate-400" />
@@ -297,14 +297,14 @@ export default function RemovePdfPage() {
                 <button
                   type="button"
                   onClick={selectOdd}
-                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
                 >
                   + Odd Pages
                 </button>
                 <button
                   type="button"
                   onClick={selectEven}
-                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
                 >
                   + Even Pages
                 </button>
@@ -323,19 +323,19 @@ export default function RemovePdfPage() {
                       applyRangeInput();
                     }
                   }}
-                  className="w-28 px-2.5 py-1 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                  className="w-28 px-2.5 py-1 text-xs rounded-lg border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-rose-500"
                 />
                 <button
                   type="button"
                   onClick={applyRangeInput}
-                  className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition-colors cursor-pointer"
                 >
                   Mark Range
                 </button>
               </div>
             }
             infoBanner={
-              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1 w-full flex-wrap gap-2">
+              <div className="flex items-center justify-between text-xs text-slate-500 px-1 w-full flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <Layers className="w-4 h-4 text-rose-500 flex-shrink-0" />
                   <span>
@@ -345,13 +345,13 @@ export default function RemovePdfPage() {
                 {pageCount && (
                   <div>
                     {selectedPages.size >= pageCount ? (
-                      <span className="text-rose-600 dark:text-rose-400 font-bold flex items-center gap-1">
+                      <span className="text-rose-600 font-bold flex items-center gap-1">
                         <AlertCircle className="w-3.5 h-3.5" />
                         Cannot remove all pages!
                       </span>
                     ) : (
                       <span>
-                        Resulting document: <strong className="text-emerald-600 dark:text-emerald-400">{remainingPagesCount}</strong> {remainingPagesCount === 1 ? "page" : "pages"}
+                        Resulting document: <strong className="text-orange-600 font-bold">{remainingPagesCount}</strong> {remainingPagesCount === 1 ? "page" : "pages"}
                       </span>
                     )}
                   </div>
@@ -384,8 +384,8 @@ export default function RemovePdfPage() {
                       onClick={() => togglePage(pageNum)}
                       className={`w-full py-1 px-2 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer ${
                         isMarked
-                          ? "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 hover:bg-rose-200"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 hover:text-rose-600"
+                          ? "bg-rose-100 text-rose-700 hover:bg-rose-200"
+                          : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-rose-600"
                       }`}
                     >
                       <Trash2 className="w-3 h-3" />
@@ -399,7 +399,7 @@ export default function RemovePdfPage() {
 
           {/* Validation warning when all pages marked */}
           {selectedPages.size >= (pageCount || 0) && (
-            <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 text-xs border border-amber-200 dark:border-amber-800 flex items-center gap-2">
+            <div className="p-4 rounded-2xl bg-amber-50 text-amber-900 text-xs border border-amber-200 flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
               <span>
                 You cannot delete every page from the PDF. At least one page must remain.
@@ -408,11 +408,11 @@ export default function RemovePdfPage() {
           )}
 
           {/* Action Bar */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={handleReset}
-              className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
             >
               Cancel
             </button>
@@ -441,30 +441,30 @@ export default function RemovePdfPage() {
 
       {/* Stage 4: Success View */}
       {state === "SUCCESS" && processedOutput && (
-        <div className="max-w-xl mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md text-center space-y-6">
-          <div className="w-14 h-14 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+        <div className="max-w-xl mx-auto p-8 bg-white rounded-3xl border border-slate-200 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
             <CheckCircle2 className="w-8 h-8" />
           </div>
 
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-extrabold text-slate-900">
               Pages Removed Successfully!
             </h2>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-slate-500">
               Removed {selectedPages.size} {selectedPages.size === 1 ? "page" : "pages"}. Processed locally in your browser.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-100 dark:border-slate-800 text-left text-xs">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-left text-xs">
             <div className="flex items-center justify-between">
-              <p className="font-semibold text-slate-900 dark:text-white">
+              <p className="font-semibold text-slate-900">
                 {processedOutput.filename}
               </p>
               <span className="text-[11px] text-slate-400">
                 {formatBytes(processedOutput.fileSizeBytes)}
               </span>
             </div>
-            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 flex items-center gap-1">
+            <p className="text-[11px] text-orange-600 mt-1 flex items-center gap-1 font-semibold">
               <ShieldCheck className="w-3 h-3" /> Ready for instant download
             </p>
           </div>
@@ -473,7 +473,7 @@ export default function RemovePdfPage() {
             <button
               type="button"
               onClick={handleDownload}
-              className="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-lg shadow-rose-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>Download Resulting PDF</span>
@@ -482,7 +482,7 @@ export default function RemovePdfPage() {
             <button
               type="button"
               onClick={handleReset}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-600 hover:bg-orange-50 hover:text-orange-700 flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Remove Pages from Another PDF</span>
@@ -493,8 +493,8 @@ export default function RemovePdfPage() {
 
       {/* Stage 5: Error View */}
       {state === "ERROR" && (
-        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-rose-200 dark:border-rose-950 shadow-md text-center space-y-6">
-          <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 dark:bg-rose-950/80 flex items-center justify-center text-rose-600 dark:text-rose-400">
+        <div className="max-w-lg mx-auto p-8 bg-white rounded-3xl border border-rose-200 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
             {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt") ? (
               <Lock className="w-8 h-8" />
             ) : (
@@ -503,12 +503,12 @@ export default function RemovePdfPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-extrabold text-slate-900">
               {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt")
                 ? "Password-Protected PDF"
                 : "Removal Error"}
             </h2>
-            <p className="mt-2 text-xs text-rose-600 dark:text-rose-400 font-medium">
+            <p className="mt-2 text-xs text-rose-600 font-medium">
               {errorMessage}
             </p>
           </div>
@@ -516,7 +516,7 @@ export default function RemovePdfPage() {
           <button
             type="button"
             onClick={handleReset}
-            className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 transition-colors cursor-pointer"
+            className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer"
           >
             Try Again with Another File
           </button>

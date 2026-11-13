@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { UploadCloud, FileText, AlertCircle } from "lucide-react";
+import { UploadCloud, FileText } from "lucide-react";
 
 interface FileUploadZoneProps {
   onFilesSelected: (files: File[]) => void;
@@ -63,10 +63,10 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       onClick={() => inputRef.current?.click()}
-      className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 ${
+      className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 shadow-xs ${
         isDragging
-          ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 scale-[1.01]"
-          : "border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 hover:border-emerald-400 hover:bg-slate-50 dark:hover:bg-slate-850"
+          ? "border-orange-500 bg-orange-50/70 scale-[1.01]"
+          : "border-orange-300/80 bg-white/90 hover:border-orange-500 hover:bg-orange-50/30 hover:shadow-md hover:shadow-orange-500/10"
       }`}
     >
       <input
@@ -78,23 +78,23 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
         className="hidden"
       />
 
-      <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 mb-4">
-        <UploadCloud className="w-8 h-8" />
+      <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/25 mb-4">
+        <UploadCloud className="w-8 h-8 stroke-[2.2]" />
       </div>
 
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+      <h3 className="text-xl font-bold text-slate-900">
         {label}
       </h3>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+      <p className="mt-1 text-sm text-slate-500">
         {sublabel}
       </p>
 
-      <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-colors">
+      <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-orange-600 hover:bg-orange-700 text-white shadow-md shadow-orange-500/20 transition-all">
         <FileText className="w-4 h-4" />
         <span>Choose Files</span>
       </div>
 
-      <p className="mt-4 text-xs text-slate-400 dark:text-slate-500">
+      <p className="mt-4 text-xs text-slate-400">
         Up to 50MB per file &bull; Processed locally in your browser
       </p>
     </div>

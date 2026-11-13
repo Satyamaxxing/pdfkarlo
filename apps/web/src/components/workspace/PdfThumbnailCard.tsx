@@ -113,14 +113,14 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
         onClick ? "cursor-pointer" : ""
       } ${
         isDragging
-          ? "opacity-30 scale-95 border-dashed border-emerald-500 bg-emerald-50/20"
+          ? "opacity-30 scale-95 border-dashed border-orange-500 bg-orange-50/20"
           : isDragOverTarget
-          ? "border-emerald-500 ring-4 ring-emerald-500/20 scale-[1.03] bg-emerald-50/30 dark:bg-emerald-950/40"
+          ? "border-orange-500 ring-4 ring-orange-500/20 scale-[1.03] bg-orange-50/40"
           : isMarkedForRemoval
-          ? "bg-rose-50/80 dark:bg-rose-950/40 border-rose-500 ring-2 ring-rose-500/20"
+          ? "bg-rose-50/90 border-rose-500 ring-2 ring-rose-500/20"
           : isSelected
-          ? "bg-emerald-50/60 dark:bg-emerald-950/40 border-emerald-500 ring-2 ring-emerald-500/30 shadow-md"
-          : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm"
+          ? "bg-orange-50/60 border-orange-500 ring-2 ring-orange-500/30 shadow-md"
+          : "bg-white border-slate-200 hover:border-orange-400 hover:shadow-md transition-all shadow-xs"
       }`}
     >
       {/* Top Header Row: Index + Badges + Zoom */}
@@ -128,13 +128,13 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
         <div className="flex items-center gap-1.5 min-w-0">
           {isDraggable && (
             <span
-              className="text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 cursor-grab active:cursor-grabbing"
+              className="text-slate-400 group-hover:text-orange-600 cursor-grab active:cursor-grabbing transition-colors"
               title="Drag to reorder"
             >
               <GripVertical className="w-3.5 h-3.5" />
             </span>
           )}
-          <span className="text-slate-600 dark:text-slate-300 truncate">
+          <span className="text-slate-700 truncate">
             {displayIndex !== undefined ? `#${displayIndex}` : `P.${pageNumber}`}
           </span>
           {displayIndex !== undefined && displayIndex !== pageNumber && (
@@ -153,7 +153,7 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
                 e.stopPropagation();
                 onOpenZoom(pageNumber);
               }}
-              className="p-1 rounded-md text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors opacity-80 group-hover:opacity-100"
+              className="p-1 rounded-md text-slate-400 hover:text-orange-600 hover:bg-orange-50 transition-colors opacity-80 group-hover:opacity-100"
               title="Zoom page preview"
               aria-label={`Zoom preview for page ${pageNumber}`}
             >
@@ -164,10 +164,10 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
       </div>
 
       {/* Thumbnail Content Box */}
-      <div className="relative w-full aspect-[1/1.4] bg-slate-100 dark:bg-slate-950/70 rounded-xl overflow-hidden flex items-center justify-center border border-slate-200/80 dark:border-slate-800/80">
+      <div className="relative w-full aspect-[1/1.4] bg-slate-50 rounded-xl overflow-hidden flex items-center justify-center border border-slate-200">
         {loading ? (
           <div className="flex flex-col items-center gap-1.5 text-slate-400 text-[10px]">
-            <Loader2 className="w-4 h-4 animate-spin text-emerald-600" />
+            <Loader2 className="w-4 h-4 animate-spin text-orange-600" />
             <span>Loading...</span>
           </div>
         ) : thumbSrc ? (
@@ -193,7 +193,7 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
         ) : (
           /* Fallback document icon when rasterization is unavailable */
           <div className="flex flex-col items-center justify-center gap-1 p-2 text-center">
-            <div className="w-8 h-10 border border-slate-300 dark:border-slate-700 rounded bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-xs text-slate-500">
+            <div className="w-8 h-10 border border-slate-300 rounded bg-white flex items-center justify-center font-bold text-xs text-slate-600">
               {pageNumber}
             </div>
             <span className="text-[9px] text-slate-400">PDF Page</span>
@@ -211,7 +211,7 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
 
         {/* Selected badge checkmark */}
         {isSelected && !isMarkedForRemoval && (
-          <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-md">
+          <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-orange-600 text-white flex items-center justify-center shadow-md">
             <Check className="w-3 h-3 stroke-[3]" />
           </div>
         )}
@@ -220,7 +220,7 @@ export const PdfThumbnailCard: React.FC<PdfThumbnailCardProps> = ({
       {/* Optional Card Actions Footer Slot (e.g. rotate buttons, shift arrows) */}
       {actionsSlot && (
         <div
-          className="w-full mt-2 pt-2 border-t border-slate-100 dark:border-slate-800"
+          className="w-full mt-2 pt-2 border-t border-slate-100"
           onClick={(e) => e.stopPropagation()}
         >
           {actionsSlot}

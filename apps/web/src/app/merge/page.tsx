@@ -229,25 +229,25 @@ export default function MergePdfPage() {
       <div className="flex items-center justify-between mb-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-orange-600 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to All Tools</span>
         </Link>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-          <ShieldCheck className="w-3.5 h-3.5" /> 100% In-Browser Privacy
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
+          <ShieldCheck className="w-3.5 h-3.5 text-orange-600" /> 100% In-Browser Privacy
         </span>
       </div>
 
       {/* Tool Title */}
       <div className="text-center max-w-xl mx-auto mb-10">
-        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md mb-3">
+        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-600 flex items-center justify-center text-white shadow-md mb-3">
           <Layers className="w-6 h-6" />
         </div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
           Merge PDF Files
         </h1>
-        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-slate-600">
           Combine multiple PDF documents into a single file with full page previews. Fast, secure, and 100% private.
         </p>
       </div>
@@ -284,19 +284,19 @@ export default function MergePdfPage() {
             isDetecting={docs.some((d) => d.isInspecting)}
             onReset={handleReset}
             toolName="Merge Tool"
-            toolIcon={<Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />}
+            toolIcon={<Layers className="w-5 h-5 text-orange-600" />}
           />
 
           {/* Document Order Management Bar */}
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
                 Document Merge Order ({docs.length})
               </span>
               <button
                 type="button"
                 onClick={() => addMoreInputRef.current?.click()}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200 dark:border-indigo-800 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 transition-colors cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add More PDFs</span>
@@ -309,16 +309,16 @@ export default function MergePdfPage() {
                   key={doc.id}
                   className={`flex items-center justify-between p-3 rounded-xl border transition-all ${
                     doc.error
-                      ? "bg-rose-50/70 dark:bg-rose-950/30 border-rose-300 dark:border-rose-800"
-                      : "bg-slate-50 dark:bg-slate-850 border-slate-200 dark:border-slate-800"
+                      ? "bg-rose-50/70 border-rose-300"
+                      : "bg-slate-50 border-slate-200"
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="w-6 h-6 rounded-md bg-indigo-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <span className="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                       #{idx + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-slate-900 dark:text-white truncate" title={doc.file.name}>
+                      <p className="text-xs font-semibold text-slate-900 truncate" title={doc.file.name}>
                         {doc.file.name}
                       </p>
                       <p className="text-[10px] text-slate-400">
@@ -337,7 +337,7 @@ export default function MergePdfPage() {
                       type="button"
                       onClick={() => moveDoc(idx, idx - 1)}
                       disabled={idx === 0}
-                      className="p-1 rounded text-slate-400 hover:text-indigo-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                      className="p-1 rounded text-slate-400 hover:text-orange-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
                       title="Move up in merge sequence"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
@@ -346,7 +346,7 @@ export default function MergePdfPage() {
                       type="button"
                       onClick={() => moveDoc(idx, idx + 1)}
                       disabled={idx === docs.length - 1}
-                      className="p-1 rounded text-slate-400 hover:text-indigo-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
+                      className="p-1 rounded text-slate-400 hover:text-orange-600 disabled:opacity-20 disabled:hover:text-slate-400 transition-colors cursor-pointer"
                       title="Move down in merge sequence"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
@@ -365,7 +365,7 @@ export default function MergePdfPage() {
             </div>
 
             {hasEncryptedOrErrorDoc && (
-              <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 text-xs border border-rose-200 dark:border-rose-800 flex items-center gap-2">
+              <div className="p-3 rounded-xl bg-rose-50 text-rose-800 text-xs border border-rose-200 flex items-center gap-2">
                 <Lock className="w-4 h-4 text-rose-600 flex-shrink-0" />
                 <span>
                   One or more documents are password-protected or unsupported. Please remove encrypted files before merging.
@@ -380,10 +380,10 @@ export default function MergePdfPage() {
               <button
                 type="button"
                 onClick={() => setViewMode("unified")}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === "unified"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                    ? "bg-orange-600 text-white shadow-sm shadow-orange-500/20"
+                    : "bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -392,10 +392,10 @@ export default function MergePdfPage() {
               <button
                 type="button"
                 onClick={() => setViewMode("by-document")}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === "by-document"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                    ? "bg-orange-600 text-white shadow-sm shadow-orange-500/20"
+                    : "bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-orange-700"
                 }`}
               >
                 <FolderOpen className="w-3.5 h-3.5" />
@@ -413,8 +413,8 @@ export default function MergePdfPage() {
             <PdfPageGrid
               totalPages={unifiedPageSequence.length}
               infoBanner={
-                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 px-1">
-                  <Layers className="w-4 h-4 text-indigo-500 flex-shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-slate-600 px-1 font-medium">
+                  <Layers className="w-4 h-4 text-orange-600 flex-shrink-0" />
                   <span>
                     Displaying every page across all {docs.length} documents in their exact output sequence.
                   </span>
@@ -439,12 +439,12 @@ export default function MergePdfPage() {
                     }
                   }}
                   badgeSlot={
-                    <span className="px-1.5 py-0.5 rounded bg-indigo-600 text-white text-[9px] font-bold truncate max-w-[80px]">
+                    <span className="px-1.5 py-0.5 rounded bg-orange-600 text-white text-[9px] font-bold truncate max-w-[80px]">
                       Doc #{item.docIndex}
                     </span>
                   }
                   actionsSlot={
-                    <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate text-center">
+                    <div className="text-[10px] text-slate-500 truncate text-center">
                       Doc {item.docIndex} &bull; Page {item.pageNumber}
                     </div>
                   }
@@ -459,15 +459,15 @@ export default function MergePdfPage() {
               {docs.map((doc, docIdx) => (
                 <div
                   key={doc.id}
-                  className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4"
+                  className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4"
                 >
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                     <div className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs font-extrabold">
+                      <span className="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center text-xs font-extrabold">
                         #{docIdx + 1}
                       </span>
                       <div>
-                        <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                        <h4 className="text-sm font-bold text-slate-900">
                           {doc.file.name}
                         </h4>
                         <p className="text-xs text-slate-400">
@@ -481,7 +481,7 @@ export default function MergePdfPage() {
                         type="button"
                         onClick={() => moveDoc(docIdx, docIdx - 1)}
                         disabled={docIdx === 0}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 disabled:opacity-20 cursor-pointer"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-orange-600 disabled:opacity-20 cursor-pointer"
                         title="Move doc up"
                       >
                         <ArrowUp className="w-4 h-4" />
@@ -490,7 +490,7 @@ export default function MergePdfPage() {
                         type="button"
                         onClick={() => moveDoc(docIdx, docIdx + 1)}
                         disabled={docIdx === docs.length - 1}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 disabled:opacity-20 cursor-pointer"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-orange-600 disabled:opacity-20 cursor-pointer"
                         title="Move doc down"
                       >
                         <ArrowDown className="w-4 h-4" />
@@ -531,18 +531,18 @@ export default function MergePdfPage() {
 
           {/* Merge Warnings */}
           {docs.length < 2 && (
-            <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 text-xs border border-amber-200 dark:border-amber-800 flex items-center gap-2">
+            <div className="p-3.5 rounded-xl bg-amber-50 text-amber-800 text-xs border border-amber-200 flex items-center gap-2">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
               <span>Please add at least 2 PDF files to perform a merge operation.</span>
             </div>
           )}
 
           {/* Action Footer */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={handleReset}
-              className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
             >
               Clear All
             </button>
@@ -550,7 +550,7 @@ export default function MergePdfPage() {
               type="button"
               disabled={docs.length < 2 || hasEncryptedOrErrorDoc}
               onClick={handleMergeSubmit}
-              className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-orange-600 hover:bg-orange-700 disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-orange-600/20 transition-all flex items-center gap-2 cursor-pointer"
             >
               <Layers className="w-4 h-4" />
               <span>
@@ -568,30 +568,30 @@ export default function MergePdfPage() {
 
       {/* Step 4: Success State */}
       {state === "SUCCESS" && processedOutput && (
-        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md text-center space-y-6">
-          <div className="w-14 h-14 mx-auto rounded-full bg-emerald-100 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+        <div className="max-w-lg mx-auto p-8 bg-white rounded-3xl border border-slate-200 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
             <CheckCircle2 className="w-8 h-8" />
           </div>
 
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-extrabold text-slate-900">
               PDFs Merged Successfully!
             </h2>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-slate-500">
               Combined {processedOutput.pageCount ?? totalCombinedPages} pages locally in your browser. Files never left your machine.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-100 dark:border-slate-800 text-left text-xs">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-left text-xs">
             <div className="flex items-center justify-between">
-              <p className="font-semibold text-slate-900 dark:text-white">
+              <p className="font-semibold text-slate-900">
                 {processedOutput.filename}
               </p>
               <span className="text-[11px] text-slate-400">
                 {formatBytes(processedOutput.fileSizeBytes)}
               </span>
             </div>
-            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 flex items-center gap-1">
+            <p className="text-[11px] text-orange-600 mt-1 flex items-center gap-1 font-semibold">
               <ShieldCheck className="w-3 h-3" /> Ready for instant download
             </p>
           </div>
@@ -600,7 +600,7 @@ export default function MergePdfPage() {
             <button
               type="button"
               onClick={handleDownload}
-              className="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>Download Merged PDF</span>
@@ -609,7 +609,7 @@ export default function MergePdfPage() {
             <button
               type="button"
               onClick={handleReset}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-600 hover:bg-orange-50 hover:text-orange-700 flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Merge More PDFs</span>
@@ -620,8 +620,8 @@ export default function MergePdfPage() {
 
       {/* Step 5: Error State */}
       {state === "ERROR" && (
-        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-slate-900 rounded-3xl border border-rose-200 dark:border-rose-950 shadow-md text-center space-y-6">
-          <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 dark:bg-rose-950/80 flex items-center justify-center text-rose-600 dark:text-rose-400">
+        <div className="max-w-lg mx-auto p-8 bg-white rounded-3xl border border-rose-200 shadow-md text-center space-y-6">
+          <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 flex items-center justify-center text-rose-600">
             {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt") ? (
               <Lock className="w-8 h-8" />
             ) : (
@@ -630,12 +630,12 @@ export default function MergePdfPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-extrabold text-slate-900">
               {errorMessage.toLowerCase().includes("password") || errorMessage.toLowerCase().includes("encrypt")
                 ? "Password-Protected PDF"
                 : "Processing Error"}
             </h2>
-            <p className="mt-2 text-xs text-rose-600 dark:text-rose-400 font-medium">
+            <p className="mt-2 text-xs text-rose-600 font-medium">
               {errorMessage}
             </p>
           </div>
@@ -643,7 +643,7 @@ export default function MergePdfPage() {
           <button
             type="button"
             onClick={handleReset}
-            className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 transition-colors cursor-pointer"
+            className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer"
           >
             Try Again with Different Files
           </button>

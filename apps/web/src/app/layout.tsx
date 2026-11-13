@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <body className="antialiased min-h-screen flex flex-col bg-white text-slate-900">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

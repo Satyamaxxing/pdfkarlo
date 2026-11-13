@@ -34,21 +34,21 @@ export const PdfPageGrid: React.FC<PdfPageGridProps> = ({
   return (
     <div className="space-y-4">
       {/* Global Action Toolbar */}
-      <div className="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap items-center justify-between gap-3">
+      <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">{toolbarLeft}</div>
 
         <div className="flex items-center gap-2.5">
           {toolbarRight}
 
           {/* Grid Zoom / Card Size Switcher */}
-          <div className="hidden sm:flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80">
+          <div className="hidden sm:flex items-center p-1 rounded-xl bg-slate-100 border border-slate-200/80">
             <button
               type="button"
               onClick={() => setCardSize("sm")}
               className={`p-1 rounded-lg text-xs transition-colors ${
                 cardSize === "sm"
-                  ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                  ? "bg-white text-orange-600 shadow-xs font-bold"
+                  : "text-slate-400 hover:text-slate-600"
               }`}
               title="Compact grid"
               aria-label="Compact card size"
@@ -60,8 +60,8 @@ export const PdfPageGrid: React.FC<PdfPageGridProps> = ({
               onClick={() => setCardSize("md")}
               className={`p-1 rounded-lg text-xs transition-colors ${
                 cardSize === "md"
-                  ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                  ? "bg-white text-orange-600 shadow-xs font-bold"
+                  : "text-slate-400 hover:text-slate-600"
               }`}
               title="Standard grid"
               aria-label="Standard card size"
@@ -73,8 +73,8 @@ export const PdfPageGrid: React.FC<PdfPageGridProps> = ({
               onClick={() => setCardSize("lg")}
               className={`p-1 rounded-lg text-xs transition-colors ${
                 cardSize === "lg"
-                  ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                  ? "bg-white text-orange-600 shadow-xs font-bold"
+                  : "text-slate-400 hover:text-slate-600"
               }`}
               title="Large grid"
               aria-label="Large card size"
@@ -88,13 +88,13 @@ export const PdfPageGrid: React.FC<PdfPageGridProps> = ({
       {infoBanner}
 
       {/* Grid Container */}
-      <div className="p-4 sm:p-6 rounded-3xl bg-slate-50/50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 shadow-inner">
-        <div className="flex items-center justify-between pb-3 text-xs text-slate-400 border-b border-slate-200/60 dark:border-slate-800/60 mb-4">
+      <div className="p-4 sm:p-6 rounded-3xl bg-slate-50/70 border border-slate-200 shadow-inner">
+        <div className="flex items-center justify-between pb-3 text-xs text-slate-500 border-b border-slate-200/80 mb-4">
           <span>
             {totalPages} {totalPages === 1 ? "page" : "pages"} loaded
           </span>
           {selectedCount !== undefined && (
-            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+            <span className="font-semibold text-orange-600">
               {selectedCount} selected
             </span>
           )}
