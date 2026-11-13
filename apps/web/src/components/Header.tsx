@@ -5,6 +5,41 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Menu, X } from "lucide-react";
 
+const SecurityShieldIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
+  <svg
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="shieldGrad" x1="16" y1="2" x2="16" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#10B981" />
+        <stop offset="1" stopColor="#059669" />
+      </linearGradient>
+      <linearGradient id="shieldBg" x1="16" y1="2" x2="16" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#ECFDF5" />
+        <stop offset="1" stopColor="#D1FAE5" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M16 2.5L6 6.8V15.2C6 21.8 10.3 27.9 16 29.5C21.7 27.9 26 21.8 26 15.2V6.8L16 2.5Z"
+      fill="url(#shieldBg)"
+      stroke="url(#shieldGrad)"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.5 15.5L14.5 18.5L20.5 12"
+      stroke="#059669"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -56,17 +91,17 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href="/#security"
-            className="flex items-center gap-2.5 pl-3 sm:pl-4 sm:border-l sm:border-slate-200 group transition-all"
+            className="flex items-center gap-3 pl-3 sm:pl-5 sm:border-l sm:border-slate-200 group transition-all"
             title="All PDF processing happens locally in your browser with zero server uploads"
           >
-            <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-2xs">
-              <ShieldCheck className="w-4 h-4 stroke-[2.2]" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-50/90 border border-emerald-200/80 flex items-center justify-center flex-shrink-0 group-hover:scale-105 group-hover:bg-emerald-100/70 transition-all shadow-xs">
+              <SecurityShieldIcon className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
             </div>
-            <div className="flex flex-col text-left leading-tight">
-              <span className="text-xs font-extrabold tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors">
+            <div className="flex flex-col text-left">
+              <span className="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors leading-tight">
                 100% In-Browser Privacy
               </span>
-              <span className="text-[10px] text-slate-400 font-medium hidden sm:inline mt-0.5">
+              <span className="text-[11px] sm:text-xs text-slate-500 font-semibold tracking-tight hidden sm:inline mt-0.5">
                 Zero Server Uploads &bull; Local Execution
               </span>
             </div>
