@@ -1,21 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Layers,
-  Split,
-  RotateCw,
-  ArrowUpDown,
-  Trash2,
-  Clock,
-} from "lucide-react";
+import Image from "next/image";
+import { Clock } from "lucide-react";
 
 interface ToolItem {
   id: string;
   name: string;
   description: string;
-  icon: React.ElementType;
-  badge?: string;
-  color: string;
+  iconSrc: string;
   href: string;
 }
 
@@ -24,40 +16,35 @@ const LAUNCH_TOOLS: ToolItem[] = [
     id: "merge",
     name: "Merge PDF",
     description: "Combine multiple PDF documents into a single unified file in your preferred order.",
-    icon: Layers,
-    color: "from-orange-500 to-amber-600",
+    iconSrc: "/icons/tool-merge.png",
     href: "/merge",
   },
   {
     id: "split",
     name: "Split PDF",
     description: "Extract specific page ranges, extract single sheets, or burst each page into standalone files.",
-    icon: Split,
-    color: "from-amber-500 to-orange-500",
+    iconSrc: "/icons/tool-split.png",
     href: "/split",
   },
   {
     id: "rotate",
     name: "Rotate PDF",
     description: "Rotate document pages by 90, 180, or 270 degrees with persistent orientation preservation.",
-    icon: RotateCw,
-    color: "from-orange-600 to-rose-500",
+    iconSrc: "/icons/tool-rotate.png",
     href: "/rotate",
   },
   {
     id: "reorder",
     name: "Reorder Pages",
     description: "Visually resequence document pages via client-side preview and drag-and-drop orchestration.",
-    icon: ArrowUpDown,
-    color: "from-amber-600 to-yellow-600",
+    iconSrc: "/icons/tool-reorder.png",
     href: "/reorder",
   },
   {
     id: "remove",
     name: "Remove Pages",
     description: "Delete unwanted pages or confidential sheets from your document before sharing.",
-    icon: Trash2,
-    color: "from-red-500 to-orange-600",
+    iconSrc: "/icons/tool-remove.png",
     href: "/remove",
   },
 ];
@@ -76,15 +63,20 @@ export const ToolGrid: React.FC = () => {
       {/* 5 Launch MVP Tools */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {LAUNCH_TOOLS.map((tool) => {
-          const Icon = tool.icon;
           return (
             <Link
               key={tool.id}
               href={tool.href}
               className="group relative flex flex-col p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-orange-500/10 hover:border-orange-500 transition-all duration-200"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${tool.color} flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform mb-4`}>
-                <Icon className="w-6 h-6" />
+              <div className="w-14 h-14 mb-4 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                <Image
+                  src={tool.iconSrc}
+                  alt={tool.name}
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain"
+                />
               </div>
 
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
