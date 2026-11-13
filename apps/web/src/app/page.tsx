@@ -1,41 +1,60 @@
 import React from "react";
-import { ToolGrid } from "@/components/ToolGrid";
-import { ShieldCheck, Cpu, Code2 } from "lucide-react";
+import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
+import { ShieldCheck, Cpu, Lock, Code2 } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Hero Section */}
-      <div className="text-center py-12 lg:py-16">
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 max-w-4xl mx-auto leading-tight">
-          Every tool you need to work with PDFs, in one place.
-        </h1>
-        
-        <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Fast, private, and browser-local. All document manipulation runs entirely on your device with isolated Web Workers — no server uploads, no data retention.
-        </p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      {/* 2-Column Split Hero & Tools Workspace */}
+      <section id="tools" className="pb-12 scroll-mt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column (Red Box): Heading, Intro & Trust Guarantees */}
+          <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+              Every tool you need to work with PDFs, in one place.
+            </h1>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-600">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Zero Server Uploads</span>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              Fast, private, and browser-local. All document manipulation runs entirely on your device with isolated Web Workers &mdash; no server uploads, no data retention.
+            </p>
+
+            {/* Core Trust & Architecture Points */}
+            <div className="mt-8 space-y-3.5 pt-6 border-t border-slate-200/80">
+              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 stroke-[2.2]" />
+                </div>
+                <span>Zero Server Uploads &bull; 100% In-Browser</span>
+              </div>
+
+              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <Cpu className="w-4 h-4 stroke-[2.2]" />
+                </div>
+                <span>Client-Side Web Workers Engine</span>
+              </div>
+
+              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                  <Lock className="w-4 h-4 stroke-[2.2]" />
+                </div>
+                <span>Zero Tracking &bull; Zero Data Retention</span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>Client-Side Web Workers</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>Zero Data Retention</span>
+
+          {/* Right Column (Blue Box): All 5 Accessible Tools */}
+          <div className="lg:col-span-7">
+            <ToolGrid />
           </div>
         </div>
-      </div>
 
-      {/* Tools Grid */}
-      <ToolGrid />
+        {/* Roadmap Section */}
+        <RoadmapSection />
+      </section>
 
       {/* Architecture Highlights */}
-      <section id="security" className="mt-20 py-16 border-t border-slate-200 scroll-mt-20">
+      <section id="security" className="mt-16 py-16 border-t border-slate-200 scroll-mt-20">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
             Engineered for Security and Reliability

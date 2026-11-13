@@ -59,58 +59,65 @@ const ROADMAP_TOOLS = [
 
 export const ToolGrid: React.FC = () => {
   return (
-    <section id="tools" className="pb-12">
-      {/* 5 Launch MVP Tools */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {LAUNCH_TOOLS.map((tool) => {
-          return (
-            <Link
-              key={tool.id}
-              href={tool.href}
-              className="group relative flex flex-col p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-orange-500/10 hover:border-orange-500 transition-all duration-200"
-            >
-              <div className="w-14 h-14 mb-4 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                <Image
-                  src={tool.iconSrc}
-                  alt={tool.name}
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {LAUNCH_TOOLS.map((tool) => {
+        const isLastOdd = tool.id === "remove";
+        return (
+          <Link
+            key={tool.id}
+            href={tool.href}
+            className={`group relative flex ${
+              isLastOdd
+                ? "sm:col-span-2 flex-col sm:flex-row sm:items-center sm:gap-4 p-4 sm:p-5"
+                : "flex-col p-4 sm:p-5"
+            } bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg hover:shadow-orange-500/10 hover:border-orange-500 transition-all duration-200`}
+          >
+            <div className="w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-3 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+              <Image
+                src={tool.iconSrc}
+                alt={tool.name}
+                width={56}
+                height={56}
+                className="w-full h-full object-contain"
+              />
+            </div>
 
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
                 {tool.name}
               </h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {tool.description}
               </p>
-            </Link>
-          );
-        })}
-      </div>
-
-      {/* Post-Launch Roadmap Section */}
-      <div className="mt-16 pt-10 border-t border-slate-200">
-        <div className="flex items-center gap-2 mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-          <Clock className="w-4 h-4 text-orange-500" />
-          <span>Post-Launch Roadmap Tools</span>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {ROADMAP_TOOLS.map((item) => (
-            <div
-              key={item.name}
-              className="p-3.5 rounded-xl border border-dashed border-slate-300 bg-white/80 text-left hover:border-orange-300 transition-colors"
-            >
-              <div className="text-xs font-bold text-slate-800">{item.name}</div>
-              <div className="text-[11px] text-slate-500 mt-0.5">{item.desc}</div>
-              <span className="inline-block mt-2 text-[10px] font-medium text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
-                Post-Launch
-              </span>
             </div>
-          ))}
-        </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
+export const RoadmapSection: React.FC = () => {
+  return (
+    <div className="mt-16 pt-10 border-t border-slate-200">
+      <div className="flex items-center gap-2 mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">
+        <Clock className="w-4 h-4 text-orange-500" />
+        <span>Post-Launch Roadmap Tools</span>
       </div>
-    </section>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        {ROADMAP_TOOLS.map((item) => (
+          <div
+            key={item.name}
+            className="p-3.5 rounded-xl border border-dashed border-slate-300 bg-white/80 text-left hover:border-orange-300 transition-colors"
+          >
+            <div className="text-xs font-bold text-slate-800">{item.name}</div>
+            <div className="text-[11px] text-slate-500 mt-0.5">{item.desc}</div>
+            <span className="inline-block mt-2 text-[10px] font-medium text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
+              Post-Launch
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
