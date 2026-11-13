@@ -12,21 +12,21 @@ export default function HomePage() {
         </h1>
         
         <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          100% free, private, and secure. Your PDFs are processed locally in your browser. PDF files are not uploaded to our servers.
+          Fast, private, and browser-local. All document manipulation runs entirely on your device with isolated Web Workers — no server uploads, no data retention.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm font-semibold text-slate-600">
+        <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-600">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-orange-600" />
-            <span>No Server Uploads</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>Zero Server Uploads</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-            <span>100% In-Browser Privacy</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Client-Side Web Workers</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-            <span>Zero Tracking or Data Retention</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Zero Data Retention</span>
           </div>
         </div>
       </div>

@@ -52,13 +52,25 @@ export const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Right side items: Badge + Mobile Hamburger */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-orange-50 text-orange-700 shadow-xs border border-orange-200/80 whitespace-nowrap">
-            <ShieldCheck className="w-3.5 h-3.5 text-orange-600 flex-shrink-0" />
-            <span className="hidden sm:inline">100% In-Browser Privacy</span>
-            <span className="sm:hidden">Local Privacy</span>
-          </span>
+        {/* Right side items: Professional Privacy Seal + Mobile Hamburger */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <Link
+            href="/#security"
+            className="flex items-center gap-2.5 pl-3 sm:pl-4 sm:border-l sm:border-slate-200 group transition-all"
+            title="All PDF processing happens locally in your browser with zero server uploads"
+          >
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-2xs">
+              <ShieldCheck className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <div className="flex flex-col text-left leading-tight">
+              <span className="text-xs font-extrabold tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors">
+                100% In-Browser Privacy
+              </span>
+              <span className="text-[10px] text-slate-400 font-medium hidden sm:inline mt-0.5">
+                Zero Server Uploads &bull; Local Execution
+              </span>
+            </div>
+          </Link>
 
           {/* Mobile Menu Toggle Button */}
           <button
