@@ -81,30 +81,18 @@ export const ToolGrid: React.FC = () => {
             <Link
               key={tool.id}
               href={tool.href}
-              className="group relative flex flex-col justify-between p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-orange-500/10 hover:border-orange-500 transition-all duration-200"
+              className="group relative flex flex-col p-6 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:shadow-orange-500/10 hover:border-orange-500 transition-all duration-200"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${tool.color} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-orange-50 text-orange-700 border border-orange-200">
-                    Ready
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
-                  {tool.name}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  {tool.description}
-                </p>
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${tool.color} flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform mb-4`}>
+                <Icon className="w-6 h-6" />
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
-                <span>Launch Tool</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                {tool.name}
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                {tool.description}
+              </p>
             </Link>
           );
         })}
