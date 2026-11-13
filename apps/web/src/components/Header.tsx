@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center group py-1" aria-label="PDFKarlo Home">
           <Image
             src="/logo.png"

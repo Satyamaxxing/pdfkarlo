@@ -1,13 +1,13 @@
 import React from "react";
 import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
-import { ShieldCheck, Cpu, Lock, Code2 } from "lucide-react";
+import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
       {/* 2-Column Split Hero & Tools Workspace */}
       <section id="tools" className="pb-12 scroll-mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* Left Column (Red Box): Heading, Intro & Trust Guarantees */}
           <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
             <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-[1.15]">
@@ -39,6 +39,39 @@ export default function HomePage() {
                   <Lock className="w-4 h-4 stroke-[2.2]" />
                 </div>
                 <span>Zero Tracking &bull; Zero Data Retention</span>
+              </div>
+            </div>
+
+            {/* Vertical Balance Card: Why In-Browser? */}
+            <div className="mt-8 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3.5">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-800">
+                <span className="flex items-center gap-1.5 text-orange-600 font-extrabold">
+                  <Sparkles className="w-4 h-4" /> Why In-Browser?
+                </span>
+                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  Client Sandbox Active
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Traditional PDF editors upload your sensitive files to remote servers. PDFKarlo runs WebAssembly &amp; Web Workers locally in your browser so documents never leave your machine.
+              </p>
+              <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-700">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span>Max 50 MB / file</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span>Instant Processing</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span>100% Free Forever</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <span>No Account Required</span>
+                </div>
               </div>
             </div>
           </div>

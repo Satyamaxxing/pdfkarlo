@@ -4,7 +4,7 @@ import { ShieldCheck, Cpu, Lock } from "lucide-react";
 export const Footer: React.FC = () => {
   return (
     <footer className="mt-auto border-t border-slate-200 bg-white/95 backdrop-blur-md py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="flex items-start gap-4">
             <div className="p-2.5 rounded-xl bg-orange-50 text-orange-600 border border-orange-100 flex-shrink-0">
