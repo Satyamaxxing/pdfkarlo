@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FileText, ShieldCheck, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck, Menu, X } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,14 +24,16 @@ export const Header: React.FC = () => {
 
   return (
     <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-            <FileText className="w-5 h-5 text-white stroke-[2.5]" />
-          </div>
-          <span className="font-extrabold text-2xl tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors">
-            PDFKarlo
-          </span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center group py-1" aria-label="PDFKarlo Home">
+          <Image
+            src="/logo.png"
+            alt="PDFKarlo"
+            width={200}
+            height={48}
+            priority
+            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -53,7 +56,8 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-2 sm:gap-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-orange-50 text-orange-700 shadow-xs border border-orange-200/80 whitespace-nowrap">
             <ShieldCheck className="w-3.5 h-3.5 text-orange-600 flex-shrink-0" />
-            <span>100% In-Browser Privacy</span>
+            <span className="hidden sm:inline">100% In-Browser Privacy</span>
+            <span className="sm:hidden">Local Privacy</span>
           </span>
 
           {/* Mobile Menu Toggle Button */}
