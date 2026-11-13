@@ -22,28 +22,28 @@ export const Header: React.FC = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="border-b border-orange-600/80 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 shadow-md sticky top-0 z-50">
+    <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-orange-600 shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
-            <FileText className="w-5 h-5 text-orange-600 stroke-[2.5]" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+            <FileText className="w-5 h-5 text-white stroke-[2.5]" />
           </div>
-          <span className="font-extrabold text-2xl tracking-tight text-white drop-shadow-xs">
+          <span className="font-extrabold text-2xl tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors">
             PDFKarlo
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 text-sm font-semibold text-white/95">
+        <nav className="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-600">
           <Link
             href="/#tools"
-            className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors"
+            className="px-3.5 py-1.5 rounded-lg hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
             All Tools
           </Link>
           <Link
             href="/#security"
-            className="px-3.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors"
+            className="px-3.5 py-1.5 rounded-lg hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
             Privacy & Security
           </Link>
@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
 
         {/* Right side items: Badge + Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-white text-orange-600 shadow-sm border border-orange-200/50 whitespace-nowrap">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-orange-50 text-orange-700 shadow-xs border border-orange-200/80 whitespace-nowrap">
             <ShieldCheck className="w-3.5 h-3.5 text-orange-600 flex-shrink-0" />
             <span>100% In-Browser Privacy</span>
           </span>
@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="md:hidden p-2 rounded-xl text-white hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white transition-colors cursor-pointer"
+            className="md:hidden p-2 rounded-xl text-slate-700 hover:text-orange-600 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -75,19 +75,19 @@ export const Header: React.FC = () => {
         <nav
           id="mobile-navigation"
           aria-label="Mobile Navigation"
-          className="md:hidden border-t border-orange-600 bg-orange-600 text-white px-4 py-3 space-y-1 shadow-xl animate-in slide-in-from-top-2 duration-150"
+          className="md:hidden border-t border-slate-200 bg-white text-slate-800 px-4 py-3 space-y-1 shadow-lg animate-in slide-in-from-top-2 duration-150"
         >
           <Link
             href="/#tools"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-white/15 transition-colors"
+            className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-700 hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
             All Tools
           </Link>
           <Link
             href="/#security"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-white/15 transition-colors"
+            className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-700 hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
             Privacy & Security
           </Link>
