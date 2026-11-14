@@ -94,35 +94,23 @@ export default function HomePage() {
       {/* Expanded USP Dialogue Section: Why In-Browser? */}
       <section id="why-in-browser" className="mt-16 sm:mt-24 scroll-mt-20">
         <div className="rounded-3xl bg-white border-2 border-orange-200/90 shadow-sm p-6 sm:p-10 lg:p-14 relative overflow-hidden">
-          {/* Header Row of the Dialogue Box */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-slate-100">
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-orange-600 flex-shrink-0">
-                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
+          {/* Header Row of the Dialogue Box - Centered Alignment */}
+          <div className="flex flex-col items-center text-center pb-6 sm:pb-8 border-b border-slate-100">
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-orange-600 flex-shrink-0 shadow-xs">
+                <Sparkles className="w-5 h-5" />
               </div>
-              <div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  Why In-Browser?
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                  The primary Unique Selling Proposition (USP) of PDFKarlo
-                </p>
-              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Why In-Browser?
+              </h2>
             </div>
-
-            <div className="flex items-center gap-2 self-start sm:self-center">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                Client Sandbox Active
-              </span>
-            </div>
+            <p className="text-xs sm:text-sm sm:text-base text-slate-500 font-medium mt-2">
+              The primary Unique Selling Proposition (USP) of PDFKarlo
+            </p>
           </div>
 
           {/* Core Philosophy Statement */}
-          <div className="py-6 sm:py-8 max-w-4xl">
+          <div className="py-6 sm:py-8 max-w-4xl mx-auto text-center">
             <p className="text-base sm:text-xl lg:text-2xl text-slate-800 font-medium leading-relaxed">
               Traditional PDF editors upload your sensitive files to remote servers. PDFKarlo runs WebAssembly &amp; Web Workers locally in your browser so <span className="text-orange-600 font-extrabold underline decoration-orange-300 underline-offset-4">documents never leave your machine</span>.
             </p>
@@ -176,15 +164,10 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Action Footer of the Dialogue Box */}
-          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Independently verifiable via Chrome/Edge DevTools (F12) Network tab</span>
-            </div>
-
+          <div className="mt-8 pt-6 border-t border-slate-100 flex justify-center">
             <Link
               href="/security"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-600 text-white font-bold text-xs sm:text-sm hover:bg-orange-700 transition-colors shadow-xs group"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-orange-600 text-white font-bold text-xs sm:text-sm hover:bg-orange-700 transition-colors shadow-xs group"
             >
               <span>Explore our 100% in-browser USP &amp; architecture</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
