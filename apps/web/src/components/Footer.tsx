@@ -1,10 +1,23 @@
 import React from "react";
+import Image from "next/image";
 import { ShieldCheck, Cpu, Lock } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-auto border-t border-slate-200 bg-white/95 backdrop-blur-md py-12">
-      <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
+    <footer className="mt-auto border-t border-slate-200 bg-white/95 backdrop-blur-md relative overflow-hidden">
+      {/* Decorative PDF Workflow Wave Illustration */}
+      <div className="w-full flex justify-center pt-8 px-4 pointer-events-none select-none">
+        <Image
+          src="/footer-art.png"
+          alt="PDFKarlo Workflow Illustration"
+          width={1024}
+          height={294}
+          className="w-full max-w-4xl h-auto object-contain [mask-image:linear-gradient(to_right,transparent_0%,black_8%,black_92%,transparent_100%),linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+          priority
+        />
+      </div>
+
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="flex items-start gap-4">
             <div className="p-2.5 rounded-xl bg-orange-50 text-orange-600 border border-orange-100 flex-shrink-0">
