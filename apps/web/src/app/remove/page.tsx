@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ToolSwitcherNav } from "@/components/ToolSwitcherNav";
 import { FileUploadZone } from "@/components/FileUploadZone";
 import { JobProgressBar } from "@/components/JobProgressBar";
 import { WorkspaceHeader } from "@/components/workspace/WorkspaceHeader";
@@ -220,50 +221,57 @@ export default function RemovePdfPage() {
   const totalPagesDisplay = pageCount || 1;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Navigation Breadcrumb */}
-      <div className="flex items-center justify-between mb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-orange-600 transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to All Tools</span>
-        </Link>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700 border border-orange-200">
-          <ShieldCheck className="w-3.5 h-3.5 text-orange-600" /> 100% In-Browser Privacy
-        </span>
-      </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      {/* Studio Navigation & Tool Switcher */}
+      <ToolSwitcherNav currentTool="remove" />
 
-      {/* Feature Header */}
-      <div className="text-center max-w-xl mx-auto mb-10">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-b from-white to-orange-50/50 border border-orange-200/80 shadow-xs flex items-center justify-center p-2.5 mb-4">
-          <Image
-            src="/icons/tool-remove.png"
-            alt="Remove Pages"
-            width={64}
-            height={64}
-            priority
-            className="w-full h-full object-contain"
-          />
-        </div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
-          Remove PDF Pages
-        </h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Select and delete unwanted pages, blank sheets, or confidential sections from your document directly in your browser.
-        </p>
-      </div>
-
-      {/* Stage 1: Upload Dropzone */}
+      {/* Step 1: Studio Drop Stage */}
       {state === "IDLE" && (
-        <FileUploadZone
-          onFilesSelected={handleFileSelected}
-          multiple={false}
-          maxFiles={1}
-          label="Select a PDF file to remove pages"
-          sublabel="or drop a PDF document here"
-        />
+        <div className="rounded-3xl bg-white border border-slate-200/90 shadow-sm p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-10">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-b from-white to-rose-50/60 border border-rose-200/80 shadow-xs flex items-center justify-center p-2.5 mb-4 group hover:scale-105 transition-transform">
+              <Image
+                src="/icons/tool-remove.png"
+                alt="Remove Pages"
+                width={64}
+                height={64}
+                priority
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+              Remove PDF Pages
+            </h1>
+            <p className="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto font-normal">
+              Select and delete unwanted sheets, blank pages, or confidential sections from your document directly in your browser.
+            </p>
+
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-600">
+              <span className="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200/70">
+                Visual Sheet Deletion
+              </span>
+              <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
+                Lossless Output
+              </span>
+              <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70">
+                100% In-Browser RAM
+              </span>
+            </div>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <FileUploadZone
+              onFilesSelected={handleFileSelected}
+              multiple={false}
+              maxFiles={1}
+              label="Drop a PDF file to remove pages"
+              sublabel="or browse your computer to select a document"
+              buttonText="Select PDF File"
+              toolIconSrc="/icons/tool-remove.png"
+            />
+          </div>
+        </div>
       )}
 
       {/* Stage 2: Page Selection Workspace */}
