@@ -3,6 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
 import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  ZeroServerUploadsShieldSvg,
+  ClientSideWebWorkersChipSvg,
+  ZeroTrackingVaultLockSvg,
+} from "@/components/TrustBadges";
 
 export default function HomePage() {
   return (
@@ -40,24 +45,24 @@ export default function HomePage() {
             </p>
 
             {/* Core Trust & Architecture Points */}
-            <div className="mt-8 space-y-3.5 pt-6 border-t border-slate-200/80">
-              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
-                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4 stroke-[2.2]" />
+            <div className="mt-8 space-y-4 pt-6 border-t border-slate-200/80">
+              <div className="flex items-center gap-3.5 text-sm sm:text-base font-bold text-slate-800">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-b from-white to-emerald-50 border border-emerald-200/90 shadow-xs flex items-center justify-center flex-shrink-0">
+                  <ZeroServerUploadsShieldSvg className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
                 </div>
                 <span>Zero Server Uploads &bull; 100% In-Browser</span>
               </div>
 
-              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
-                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
-                  <Cpu className="w-4 h-4 stroke-[2.2]" />
+              <div className="flex items-center gap-3.5 text-sm sm:text-base font-bold text-slate-800">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-b from-white to-emerald-50 border border-emerald-200/90 shadow-xs flex items-center justify-center flex-shrink-0">
+                  <ClientSideWebWorkersChipSvg className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
                 </div>
                 <span>Client-Side Web Workers Engine</span>
               </div>
 
-              <div className="flex items-center gap-3 text-sm font-semibold text-slate-800">
-                <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 flex-shrink-0">
-                  <Lock className="w-4 h-4 stroke-[2.2]" />
+              <div className="flex items-center gap-3.5 text-sm sm:text-base font-bold text-slate-800">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-b from-white to-emerald-50 border border-emerald-200/90 shadow-xs flex items-center justify-center flex-shrink-0">
+                  <ZeroTrackingVaultLockSvg className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
                 </div>
                 <span>Zero Tracking &bull; Zero Data Retention</span>
               </div>
