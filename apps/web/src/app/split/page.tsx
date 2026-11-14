@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FileUploadZone } from "@/components/FileUploadZone";
 import { JobProgressBar } from "@/components/JobProgressBar";
 import { WorkspaceHeader } from "@/components/workspace/WorkspaceHeader";
@@ -237,8 +238,15 @@ export default function SplitPdfPage() {
 
       {/* Tool Title */}
       <div className="text-center max-w-xl mx-auto mb-10">
-        <div className="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-white shadow-md mb-3">
-          <Split className="w-6 h-6" />
+        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-b from-white to-orange-50/50 border border-orange-200/80 shadow-xs flex items-center justify-center p-2.5 mb-4">
+          <Image
+            src="/icons/tool-split.png"
+            alt="Split PDF"
+            width={64}
+            height={64}
+            priority
+            className="w-full h-full object-contain"
+          />
         </div>
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
           Split PDF File
@@ -269,7 +277,15 @@ export default function SplitPdfPage() {
             isDetecting={isDetectingPages}
             onReset={handleReset}
             toolName="Split Tool"
-            toolIcon={<Split className="w-5 h-5 text-orange-600" />}
+            toolIcon={
+              <Image
+                src="/icons/tool-split.png"
+                alt="Split PDF"
+                width={28}
+                height={28}
+                className="w-6 h-6 object-contain"
+              />
+            }
           />
 
           {/* Mode Selector Tabs */}
