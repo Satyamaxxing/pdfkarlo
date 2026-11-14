@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pdfkarlo.pages.dev"),
-  title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+  title: "PDFKarlo — Free 100% In-Browser PDF Tools",
   description: "Fast, private, and secure browser-based PDF tools. Merge, split, rotate, reorder, and remove PDF pages locally on your device with zero server uploads.",
   icons: {
     icon: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+    title: "PDFKarlo — Free 100% In-Browser PDF Tools",
     description: "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
     url: "https://pdfkarlo.pages.dev",
     siteName: "PDFKarlo",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
+    title: "PDFKarlo — Free 100% In-Browser PDF Tools",
     description: "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
   },
 };
