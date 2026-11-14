@@ -1,7 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
-import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -92,6 +93,16 @@ export default function HomePage() {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                   <span>No Account Required</span>
                 </div>
+              </div>
+
+              <div className="pt-2 border-t border-slate-100">
+                <Link
+                  href="/security"
+                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors"
+                >
+                  <span>Explore our 100% in-browser USP &amp; architecture</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
               </div>
             </div>
           </div>

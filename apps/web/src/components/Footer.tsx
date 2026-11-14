@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Cpu, Lock } from "lucide-react";
 
@@ -59,6 +60,9 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} PDFKarlo Platform. Independently engineered & permissive open-source foundation.</p>
           <div className="flex flex-wrap gap-4 sm:gap-6 justify-center font-medium">
+            <Link href="/security" className="hover:text-orange-600 transition-colors">
+              Why In-Browser &amp; Security USP
+            </Link>
             <span>Client-Side v1.0.0</span>
             <span>Zero Data Collection</span>
             <span>Zero AGPL Dependencies</span>

@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
             All Tools
           </Link>
           <Link
-            href="/#security"
+            href="/security"
             className="px-3.5 py-1.5 rounded-lg hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
             Privacy & Security
@@ -90,7 +90,7 @@ export const Header: React.FC = () => {
         {/* Right side items: Professional Privacy Seal + Mobile Hamburger */}
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
-            href="/#security"
+            href="/security"
             className="flex items-center gap-3 pl-3 sm:pl-5 sm:border-l sm:border-slate-200 group transition-all"
             title="All PDF processing happens locally in your browser with zero server uploads"
           >
@@ -136,7 +136,7 @@ export const Header: React.FC = () => {
             All Tools
           </Link>
           <Link
-            href="/#security"
+            href="/security"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-700 hover:text-orange-600 hover:bg-orange-50 transition-colors"
           >
