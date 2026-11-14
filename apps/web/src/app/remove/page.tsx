@@ -227,22 +227,22 @@ export default function RemovePdfPage() {
 
       {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
-        <div className="max-w-2xl mx-auto py-4 sm:py-8 space-y-6">
-          <div className="text-center">
-            <div className="w-14 h-14 mx-auto mb-3 flex items-center justify-center">
+        <div className="max-w-2xl mx-auto py-8 sm:py-14 flex flex-col items-center justify-center text-center space-y-6">
+          <div>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
               <Image
                 src="/icons/tool-remove.png"
                 alt="Remove Pages"
-                width={56}
-                height={56}
+                width={80}
+                height={80}
                 priority
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain drop-shadow-sm hover:scale-105 transition-transform"
               />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
               Remove PDF Pages
             </h1>
-            <p className="mt-2 text-sm sm:text-base text-slate-500 font-medium">
+            <p className="mt-3 text-base sm:text-lg text-slate-500 font-normal max-w-lg mx-auto">
               Delete unwanted or confidential sheets from your document.
             </p>
           </div>

@@ -33,6 +33,7 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.currentTarget.contains(e.relatedTarget as Node)) return;
     setIsDragging(false);
   };
 
@@ -63,11 +64,10 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      onClick={() => inputRef.current?.click()}
-      className={`rounded-3xl border-2 border-dashed p-10 sm:p-16 text-center cursor-pointer transition-all duration-200 flex flex-col items-center justify-center gap-4 ${
+      className={`relative w-full max-w-xl mx-auto py-8 sm:py-10 px-6 rounded-3xl transition-all duration-300 flex flex-col items-center justify-center ${
         isDragging
-          ? "border-orange-500 bg-orange-50/70 scale-[1.01] shadow-xl shadow-orange-500/10"
-          : "border-orange-200/90 bg-white/90 hover:border-orange-500 hover:bg-orange-50/20 hover:shadow-xl hover:shadow-orange-500/10"
+          ? "bg-orange-50/90 border-2 border-dashed border-orange-500 ring-8 ring-orange-500/10 scale-[1.02] shadow-2xl shadow-orange-500/15"
+          : "bg-transparent border-2 border-transparent"
       }`}
     >
       <input
@@ -80,20 +80,25 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
       />
 
       {/* Prominent Primary PDF Button */}
-      <div className="inline-flex items-center gap-3 px-8 py-4 sm:px-10 sm:py-5 rounded-2xl text-base sm:text-lg font-extrabold bg-orange-600 hover:bg-orange-700 text-white shadow-xl shadow-orange-600/25 hover:shadow-2xl hover:shadow-orange-600/35 hover:scale-[1.03] active:scale-[0.98] transition-all">
-        <Plus className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3]" />
+      <button
+        type="button"
+        onClick={() => inputRef.current?.click()}
+        className="group inline-flex items-center justify-center gap-3.5 px-10 sm:px-14 py-4 sm:py-5 rounded-2xl bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-500 text-white font-extrabold text-base sm:text-xl shadow-xl shadow-orange-600/30 hover:shadow-2xl hover:shadow-orange-600/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all cursor-pointer"
+      >
+        <Plus className="w-5 h-5 sm:w-6 sm:h-6 stroke-[3] group-hover:rotate-90 transition-transform duration-300" />
         <span>{buttonText}</span>
-      </div>
+      </button>
 
       {/* Clear Drop Sublabel */}
-      <p className="text-xs sm:text-sm font-semibold text-slate-500">
-        {sublabel}
+      <p className="mt-3.5 text-xs sm:text-sm font-medium text-slate-400">
+        {isDragging ? "Drop your PDF files here" : sublabel}
       </p>
 
-      {/* Minimal Privacy Reassurance */}
-      <p className="text-[11px] sm:text-xs text-slate-400 font-medium mt-1">
-        Up to 50MB per file &bull; 100% In-Browser Privacy
-      </p>
+      {/* Unique PDFKarlo Trust Micro-Pill */}
+      <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50/90 border border-slate-200/80 text-slate-500 text-xs font-semibold backdrop-blur-xs">
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span>100% In-Browser &bull; Zero Server Uploads &bull; Max 50MB</span>
+      </div>
     </div>
   );
 };
