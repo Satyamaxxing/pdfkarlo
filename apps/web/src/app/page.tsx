@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
 import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2 } from "lucide-react";
 
@@ -6,7 +7,22 @@ export default function HomePage() {
   return (
     <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
       {/* 2-Column Split Hero & Tools Workspace */}
-      <section id="tools" className="pb-12 scroll-mt-20">
+      <section id="tools" className="pb-12 scroll-mt-20 relative">
+        {/* Ambient Brand Mascot Background Watermark (Simple, Clean, Breathable) */}
+        <div
+          className="hidden lg:block absolute top-8 left-[43%] -translate-x-1/2 w-[440px] aspect-square pointer-events-none select-none -z-10 opacity-10"
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl -z-10" />
+          <Image
+            src="/mascot.png"
+            alt="PDFKarlo Mascot Watermark"
+            width={440}
+            height={366}
+            className="w-full h-full object-contain [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)]"
+            priority
+          />
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* Left Column (Red Box): Heading, Intro & Trust Guarantees */}
           <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
