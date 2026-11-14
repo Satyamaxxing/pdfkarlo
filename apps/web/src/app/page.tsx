@@ -63,47 +63,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Vertical Balance Card: Why In-Browser? */}
-            <div className="mt-8 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-3.5">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-800">
-                <span className="flex items-center gap-1.5 text-orange-600 font-extrabold">
-                  <Sparkles className="w-4 h-4" /> Why In-Browser?
-                </span>
-                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  Client Sandbox Active
-                </span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Traditional PDF editors upload your sensitive files to remote servers. PDFKarlo runs WebAssembly &amp; Web Workers locally in your browser so documents never leave your machine.
-              </p>
-              <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-700">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <span>Max 50 MB / file</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <span>Instant Processing</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <span>100% Free Forever</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <span>No Account Required</span>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-slate-100">
-                <Link
-                  href="/security"
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors"
-                >
-                  <span>Explore our 100% in-browser USP &amp; architecture</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-              </div>
+            {/* Quick Anchor to Expanded USP Section */}
+            <div className="mt-8">
+              <a
+                href="#why-in-browser"
+                className="group inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-orange-50/90 border border-orange-200/90 text-orange-700 hover:bg-orange-100 transition-all shadow-xs"
+              >
+                <Sparkles className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                <span className="text-xs font-bold">Why In-Browser is our core USP</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
 
@@ -115,6 +84,108 @@ export default function HomePage() {
 
         {/* Roadmap Section */}
         <RoadmapSection />
+      </section>
+
+      {/* Expanded USP Dialogue Section: Why In-Browser? */}
+      <section id="why-in-browser" className="mt-16 sm:mt-24 scroll-mt-20">
+        <div className="rounded-3xl bg-white border-2 border-orange-200/90 shadow-sm p-6 sm:p-10 lg:p-14 relative overflow-hidden">
+          {/* Header Row of the Dialogue Box */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 sm:pb-8 border-b border-slate-100">
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-orange-600 flex-shrink-0">
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  Why In-Browser?
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  The primary Unique Selling Proposition (USP) of PDFKarlo
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 self-start sm:self-center">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                Client Sandbox Active
+              </span>
+            </div>
+          </div>
+
+          {/* Core Philosophy Statement */}
+          <div className="py-6 sm:py-8 max-w-4xl">
+            <p className="text-base sm:text-xl lg:text-2xl text-slate-800 font-medium leading-relaxed">
+              Traditional PDF editors upload your sensitive files to remote servers. PDFKarlo runs WebAssembly &amp; Web Workers locally in your browser so <span className="text-orange-600 font-extrabold underline decoration-orange-300 underline-offset-4">documents never leave your machine</span>.
+            </p>
+          </div>
+
+          {/* 4 Feature Points in High-Impact Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-slate-100">
+            {/* 1. Max 50 MB / file */}
+            <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70 hover:border-orange-300 hover:bg-orange-50/30 transition-all group">
+              <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Max 50 MB / file</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Handles heavy multipage documents, scanned reports, and high-res PDFs directly in browser RAM without server timeouts.
+              </p>
+            </div>
+
+            {/* 2. Instant Processing */}
+            <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70 hover:border-orange-300 hover:bg-orange-50/30 transition-all group">
+              <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Instant Processing</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Zero upload bandwidth delay and zero server queue waiting. All byte-level operations run on your local CPU cores.
+              </p>
+            </div>
+
+            {/* 3. 100% Free Forever */}
+            <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70 hover:border-orange-300 hover:bg-orange-50/30 transition-all group">
+              <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>100% Free Forever</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Because we do not pay massive cloud computing bills to process your files, we never enforce subscriptions, limits, or watermarks.
+              </p>
+            </div>
+
+            {/* 4. No Account Required */}
+            <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70 hover:border-orange-300 hover:bg-orange-50/30 transition-all group">
+              <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>No Account Required</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                No email signups, no authentication cookies, and no tracking. Data is held in ephemeral memory and wiped immediately on tab close.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Action Footer of the Dialogue Box */}
+          <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Independently verifiable via Chrome/Edge DevTools (F12) Network tab</span>
+            </div>
+
+            <Link
+              href="/security"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-600 text-white font-bold text-xs sm:text-sm hover:bg-orange-700 transition-colors shadow-xs group"
+            >
+              <span>Explore our 100% in-browser USP &amp; architecture</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Architecture Highlights */}
