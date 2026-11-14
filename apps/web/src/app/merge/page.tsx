@@ -235,273 +235,35 @@ export default function MergePdfPage() {
 
       {/* Stage Area when in IDLE */}
       {state === "IDLE" && (
-        <div className="space-y-12 sm:space-y-16">
-          {/* Main Studio Drop Stage Container */}
-          <div className="rounded-3xl bg-white border border-slate-200/90 shadow-sm p-6 sm:p-10 lg:p-12 relative overflow-hidden">
-            {/* Header Content */}
-            <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-10">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-b from-white to-orange-50/60 border border-orange-200/80 shadow-xs flex items-center justify-center p-2.5 mb-4 group hover:scale-105 transition-transform">
-                <Image
-                  src="/icons/tool-merge.png"
-                  alt="Merge PDF"
-                  width={64}
-                  height={64}
-                  priority
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-                Merge PDF Files
-              </h1>
-              <p className="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto font-normal">
-                Combine multiple PDF documents into a single unified file with page-level sequencing, visual previews, and zero server uploads.
-              </p>
-
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-600">
-                <span className="px-2.5 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200/70">
-                  Multi-Document Sequencing
-                </span>
-                <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
-                  Lossless Vector Quality
-                </span>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70">
-                  100% In-Browser RAM
-                </span>
-              </div>
-            </div>
-
-            {/* Interactive Upload Zone */}
-            <div className="max-w-2xl mx-auto">
-              <FileUploadZone
-                onFilesSelected={handleFilesAdded}
-                multiple={true}
-                maxFiles={10}
-                label="Drop PDF files to merge"
-                sublabel="or browse your computer to select multiple documents"
-                buttonText="Select PDF Files"
-                toolIconSrc="/icons/tool-merge.png"
+        <div className="max-w-2xl mx-auto py-4 sm:py-8 space-y-6">
+          {/* Focused Title */}
+          <div className="text-center">
+            <div className="w-14 h-14 mx-auto mb-3 flex items-center justify-center">
+              <Image
+                src="/icons/tool-merge.png"
+                alt="Merge PDF"
+                width={56}
+                height={56}
+                priority
+                className="w-full h-full object-contain"
               />
             </div>
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+              Merge PDF Files
+            </h1>
+            <p className="mt-2 text-sm sm:text-base text-slate-500 font-medium">
+              Combine multiple PDFs into a single unified file.
+            </p>
           </div>
 
-          {/* Section 1: How It Works in 3 Simple Steps */}
-          <div>
-            <div className="text-center max-w-xl mx-auto mb-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
-                Streamlined Workflow
-              </span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
-                How Merge Works in PDFKarlo
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Step 1 */}
-              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs relative">
-                <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 text-orange-700 font-extrabold text-sm flex items-center justify-center mb-4">
-                  1
-                </div>
-                <h3 className="text-base font-bold text-slate-900">
-                  Choose Documents
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Select 2 to 10 PDF documents from your computer or drag and drop them directly onto the stage.
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs relative">
-                <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 text-orange-700 font-extrabold text-sm flex items-center justify-center mb-4">
-                  2
-                </div>
-                <h3 className="text-base font-bold text-slate-900">
-                  Reorder &amp; Inspect
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Drag documents into your exact sequence. Switch between unified sequence or by-document page previews.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs relative">
-                <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 font-extrabold text-sm flex items-center justify-center mb-4">
-                  3
-                </div>
-                <h3 className="text-base font-bold text-slate-900">
-                  Instant Download
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Click Merge to synthesize your new document in WebAssembly. Download starts immediately with zero upload waiting.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 2: Pro Capabilities Feature Grid */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/80">
-            <div className="max-w-2xl mx-auto text-center mb-8">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-                Engineered for Crisp, Uncompromised Output
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Local WebAssembly execution delivers speed, precision, and ironclad privacy.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-                <div className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-3">
-                  <Layers className="w-4.5 h-4.5" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">
-                  Lossless Vector Quality
-                </h3>
-                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                  Original font outlines, vector illustrations, forms, and high-resolution raster images remain 100% untouched without recompression.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-                <div className="w-9 h-9 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-3">
-                  <Eye className="w-4.5 h-4.5" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">
-                  Page-by-Page Inspection
-                </h3>
-                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                  Preview high-resolution thumbnails of every page across every document before merging to verify accuracy.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
-                  <ShieldCheck className="w-4.5 h-4.5" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">
-                  Zero Server Uploads
-                </h3>
-                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                  Confidential agreements, medical forms, and bank statements are processed in browser RAM and vanish when you close the tab.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3: Frequently Asked Questions */}
-          <div className="max-w-3xl mx-auto space-y-4">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 text-center mb-6">
-              Frequently Asked Questions
-            </h2>
-
-            <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                Can I merge PDF files with different page dimensions?
-              </h3>
-              <p className="mt-2 text-xs text-slate-600 leading-relaxed pl-6">
-                Yes! PDFKarlo respects each document&apos;s individual page format. Standard Letter, A4, Legal, or custom sizes are seamlessly preserved in the final output.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                How many files can I merge at one time?
-              </h3>
-              <p className="mt-2 text-xs text-slate-600 leading-relaxed pl-6">
-                You can merge up to 10 documents per batch, with each file up to 50 MB. Because processing runs on your local CPU cores, heavy multi-page files combine in seconds.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                Are my documents stored or cached on any remote server?
-              </h3>
-              <p className="mt-2 text-xs text-slate-600 leading-relaxed pl-6">
-                Never. PDFKarlo is 100% serverless for file processing. All bytes are parsed directly in your browser using isolated Web Workers.
-              </p>
-            </div>
-          </div>
-
-          {/* Section 4: Related Tools */}
-          <div className="pt-6 border-t border-slate-200/80">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Explore Other Tools in the Suite
-              </span>
-              <Link
-                href="/#tools"
-                className="text-xs font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1 group"
-              >
-                <span>All 5 Tools</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-              <Link
-                href="/split"
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-sm transition-all group flex items-center gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
-                  <Image src="/icons/tool-split.png" alt="Split" width={20} height={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors truncate">
-                    Split PDF
-                  </p>
-                  <p className="text-[11px] text-slate-500 truncate">Extract pages &amp; ranges</p>
-                </div>
-              </Link>
-
-              <Link
-                href="/rotate"
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-sm transition-all group flex items-center gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
-                  <Image src="/icons/tool-rotate.png" alt="Rotate" width={20} height={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors truncate">
-                    Rotate PDF
-                  </p>
-                  <p className="text-[11px] text-slate-500 truncate">Turn 90, 180, 270 deg</p>
-                </div>
-              </Link>
-
-              <Link
-                href="/reorder"
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-sm transition-all group flex items-center gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
-                  <Image src="/icons/tool-reorder.png" alt="Reorder" width={20} height={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors truncate">
-                    Reorder Pages
-                  </p>
-                  <p className="text-[11px] text-slate-500 truncate">Drag &amp; resequence</p>
-                </div>
-              </Link>
-
-              <Link
-                href="/remove"
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-orange-400 hover:shadow-sm transition-all group flex items-center gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
-                  <Image src="/icons/tool-remove.png" alt="Remove" width={20} height={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors truncate">
-                    Remove Pages
-                  </p>
-                  <p className="text-[11px] text-slate-500 truncate">Delete unwanted sheets</p>
-                </div>
-              </Link>
-            </div>
-          </div>
+          {/* Simple, High-Impact Upload Zone */}
+          <FileUploadZone
+            onFilesSelected={handleFilesAdded}
+            multiple={true}
+            maxFiles={10}
+            buttonText="Select PDF files"
+            sublabel="or drop PDFs here"
+          />
         </div>
       )}
 

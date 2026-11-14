@@ -232,52 +232,35 @@ export default function RotatePdfPage() {
       {/* Studio Navigation & Tool Switcher */}
       <ToolSwitcherNav currentTool="rotate" />
 
-      {/* Step 1: Studio Drop Stage */}
+      {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
-        <div className="rounded-3xl bg-white border border-slate-200/90 shadow-sm p-6 sm:p-10 lg:p-12 relative overflow-hidden">
-          <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-10">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-b from-white to-orange-50/60 border border-orange-200/80 shadow-xs flex items-center justify-center p-2.5 mb-4 group hover:scale-105 transition-transform">
+        <div className="max-w-2xl mx-auto py-4 sm:py-8 space-y-6">
+          <div className="text-center">
+            <div className="w-14 h-14 mx-auto mb-3 flex items-center justify-center">
               <Image
                 src="/icons/tool-rotate.png"
                 alt="Rotate PDF"
-                width={64}
-                height={64}
+                width={56}
+                height={56}
                 priority
                 className="w-full h-full object-contain"
               />
             </div>
-
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
               Rotate PDF Pages
             </h1>
-            <p className="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto font-normal">
-              Rotate single pages, selected spreads, or entire documents by 90°, 180°, or 270° with live previews.
+            <p className="mt-2 text-sm sm:text-base text-slate-500 font-medium">
+              Rotate single, multiple, or all pages in your document.
             </p>
-
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-600">
-              <span className="px-2.5 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200/70">
-                Interactive Canvas Rotation
-              </span>
-              <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
-                Orientation Preservation
-              </span>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70">
-                100% In-Browser RAM
-              </span>
-            </div>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <FileUploadZone
-              onFilesSelected={handleFileSelected}
-              multiple={false}
-              maxFiles={1}
-              label="Drop a PDF file to rotate"
-              sublabel="or browse your computer to select a document"
-              buttonText="Select PDF File"
-              toolIconSrc="/icons/tool-rotate.png"
-            />
-          </div>
+          <FileUploadZone
+            onFilesSelected={handleFileSelected}
+            multiple={false}
+            maxFiles={1}
+            buttonText="Select PDF file"
+            sublabel="or drop PDF here"
+          />
         </div>
       )}
 
