@@ -10,11 +10,14 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* Left Column (Red Box): Heading, Intro & Trust Guarantees */}
           <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-              Every tool you need to work with PDFs, in one place.
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-black tracking-tight text-slate-900 leading-[1.08]">
+              Every tool you need to work with PDFs,{" "}
+              <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+                in one place.
+              </span>
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-normal">
               Fast, private, and browser-local. All document manipulation runs entirely on your device with isolated Web Workers &mdash; no server uploads, no data retention.
             </p>
 
