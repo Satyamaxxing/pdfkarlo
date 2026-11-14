@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://pdfkarlo.pages.dev"),
   title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
   description: "Fast, private, and secure browser-based PDF tools. Merge, split, rotate, reorder, and remove PDF pages locally on your device with zero server uploads.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
   openGraph: {
     title: "PDFKarlo — 100% In-Browser Privacy-First PDF Platform",
     description: "Fast, private, and secure browser-based PDF tools. 100% local client-side processing with zero server uploads.",
