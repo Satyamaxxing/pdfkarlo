@@ -34,6 +34,18 @@ jobs:
         working-directory: apps/web
         run: npm run build
 
+      - name: Verify Cloudflare Secrets
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is empty or not configured in GitHub Repository Secrets! Please add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "::error title=Missing Secret::CLOUDFLARE_ACCOUNT_ID is empty or not configured in GitHub Repository Secrets!"
+            exit 1
+          fi
+          echo "✅ Cloudflare secrets verified successfully."
+
       # Deploy static output (apps/web/out) to Cloudflare Pages project 'pdfkarlo' on main
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
