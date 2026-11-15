@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import { ClientPdfService } from "@/lib/pdf/clientPdfService";
 import { ProcessedOutput } from "@/lib/pdf/types";
+import { ToolSeoSection } from "@/components/ToolSeoSection";
+import { REORDER_SEO_DATA } from "@/lib/seoData";
 
 type ReorderState = "IDLE" | "FILE_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
 
@@ -506,6 +508,8 @@ export default function ReorderPdfPage() {
           rotation={0}
         />
       )}
+      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs */}
+      <ToolSeoSection data={REORDER_SEO_DATA} />
     </div>
   );
 }

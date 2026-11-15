@@ -23,18 +23,73 @@ import {
 export const metadata: Metadata = {
   title: "Why In-Browser? — PDFKarlo Architecture & 100% Privacy Guarantee",
   description:
-    "Explore how PDFKarlo runs WebAssembly and Web Workers entirely on your device. Zero server uploads, zero cloud retention, and 100% document privacy.",
+    "Explore how PDFKarlo processes PDFs entirely on your device with Web Workers and pdf-lib. Zero server uploads, zero cloud retention, and 100% document privacy.",
+  alternates: {
+    canonical: "https://pdfkarlo.pages.dev/security/",
+  },
   openGraph: {
+    title: "Why In-Browser? — PDFKarlo Architecture & 100% Privacy Guarantee | PDFKarlo",
+    description:
+      "Your documents never leave your computer. Discover how client-side Web Workers eliminate cloud privacy risks.",
+    url: "https://pdfkarlo.pages.dev/security/",
+    siteName: "PDFKarlo",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PDFKarlo In-Browser Privacy Architecture",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Why In-Browser? — PDFKarlo Architecture & 100% Privacy Guarantee",
     description:
-      "Your documents never leave your computer. Discover how client-side Web Workers and WebAssembly eliminate cloud privacy risks.",
-    url: "https://pdfkarlo.pages.dev/security",
+      "Zero server uploads, zero cloud retention, and 100% document privacy with client-side Web Workers.",
+    images: ["/og-image.png"],
   },
+};
+
+const securityJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      name: "Why In-Browser? — PDFKarlo Privacy & Architecture",
+      url: "https://pdfkarlo.pages.dev/security/",
+      description:
+        "Detailed technical overview of PDFKarlo client-side PDF processing architecture, memory boundaries, and zero server upload guarantee.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://pdfkarlo.pages.dev/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Privacy & Security Architecture",
+          item: "https://pdfkarlo.pages.dev/security/",
+        },
+      ],
+    },
+  ],
 };
 
 export default function SecurityPage() {
   return (
     <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(securityJsonLd) }}
+      />
       {/* 1. Hero USP Banner */}
       <div className="max-w-4xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-700 text-xs font-bold mb-6">

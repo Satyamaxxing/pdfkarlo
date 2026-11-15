@@ -2,37 +2,50 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ToolGrid, RoadmapSection } from "@/components/ToolGrid";
-import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { ShieldCheck, Cpu, Lock, Code2, Sparkles, CheckCircle2, ArrowRight, HelpCircle } from "lucide-react";
 import {
   ZeroServerUploadsShieldSvg,
   ClientSideWebWorkersChipSvg,
   ZeroTrackingVaultLockSvg,
 } from "@/components/TrustBadges";
+import { HOMEPAGE_FAQS } from "@/lib/seoData";
 
 export default function HomePage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOMEPAGE_FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
   return (
     <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
       {/* 2-Column Split Hero & Tools Workspace */}
       <section id="tools" className="pb-12 scroll-mt-20 relative">
         {/* Ambient Brand Mascot Background Watermark (Simple, Clean, Breathable) */}
         <div
-          className="hidden lg:block absolute top-8 left-[43%] -translate-x-1/2 w-[440px] aspect-square pointer-events-none select-none -z-10 opacity-10"
+          className="hidden sm:block absolute -top-8 sm:-top-12 lg:-top-10 left-[48%] lg:left-[44%] -translate-x-1/2 w-[520px] sm:w-[640px] lg:w-[740px] xl:w-[820px] aspect-square pointer-events-none select-none -z-10 opacity-14 sm:opacity-15"
           aria-hidden="true"
         >
           <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl -z-10" />
           <Image
             src="/mascot.png"
             alt="PDFKarlo Mascot Watermark"
-            width={440}
-            height={366}
-            className="w-full h-full object-contain [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)]"
+            width={820}
+            height={683}
+            className="w-full h-full object-contain [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_90%)]"
             priority
           />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
           {/* Left Column (Red Box): Heading, Intro & Trust Guarantees */}
-          <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.15rem] xl:text-[3.45rem] font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+          <div className="lg:col-span-6 flex flex-col justify-start lg:sticky lg:top-24 pt-1 sm:pt-2">
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.25rem] font-extrabold tracking-tight text-slate-900 leading-[1.08] sm:leading-[1.05]">
               Every tool you need<br />
               <span className="sm:whitespace-nowrap">to work with PDFs,</span><br />
               <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 bg-clip-text text-transparent">
@@ -40,8 +53,8 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="mt-5 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-normal">
-              Fast, private, and browser-local. All document manipulation runs entirely on your device with isolated Web Workers &mdash; no server uploads, no data retention.
+            <p className="mt-5 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-normal max-w-xl">
+              <strong className="text-slate-900 font-semibold">PDF ka kaam online karo, free mein — with PDFKarlo.</strong> Fast, private, and 100% browser-local. Merge, split, rotate, reorder, and remove PDF pages directly on your device with isolated Web Workers &mdash; no server uploads, no accounts, and up to 50 MB per file.
             </p>
 
             {/* Core Trust & Architecture Points */}
@@ -82,7 +95,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Column (Blue Box): All 5 Accessible Tools */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <ToolGrid />
           </div>
         </div>
@@ -140,14 +153,14 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* 3. 100% Free Forever */}
+            {/* 3. 100% Free to Use */}
             <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70 hover:border-orange-300 hover:bg-orange-50/30 transition-all group">
               <div className="flex items-center gap-2 text-emerald-700 font-bold text-sm mb-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>100% Free Forever</span>
+                <span>100% Free to Use</span>
               </div>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Because we do not pay massive cloud computing bills to process your files, we never enforce subscriptions, limits, or watermarks.
+                All 5 available PDF tools are completely free to use. Zero subscriptions, zero paywalls, and zero watermarks on your exported documents.
               </p>
             </div>
 
@@ -217,6 +230,44 @@ export default function HomePage() {
               100% clean Apache-2.0 and MIT client engine powered by pdf-lib, JSZip, and modern Web standards. Zero AGPL exposure.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* 4. Frequently Asked Questions (Homepage FAQ) */}
+      <section id="faq" className="mt-16 sm:mt-24 py-16 border-t border-slate-200 scroll-mt-20">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-700 text-xs font-bold mb-4">
+            <HelpCircle className="w-3.5 h-3.5 text-orange-600" />
+            <span>Got Questions?</span>
+          </div>
+          <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Everything you need to know about PDFKarlo, our free in-browser PDF utilities, document privacy, and 50 MB per-file limits.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto space-y-4">
+          {HOMEPAGE_FAQS.map((faq, idx) => (
+            <div
+              key={idx}
+              className="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:border-orange-200 transition-all"
+            >
+              <h3 className="font-bold text-base sm:text-lg text-slate-900 mb-2 flex items-start gap-3">
+                <span className="text-orange-600 font-extrabold">Q.</span>
+                <span>{faq.question}</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

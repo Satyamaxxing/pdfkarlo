@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 import { ClientPdfService } from "@/lib/pdf/clientPdfService";
 import { ProcessedOutput, SplitMode } from "@/lib/pdf/types";
+import { ToolSeoSection } from "@/components/ToolSeoSection";
+import { SPLIT_SEO_DATA } from "@/lib/seoData";
 
 type SplitState = "IDLE" | "FILE_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
 
@@ -634,6 +636,8 @@ export default function SplitPdfPage() {
           rotation={0}
         />
       )}
+      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs */}
+      <ToolSeoSection data={SPLIT_SEO_DATA} />
     </div>
   );
 }

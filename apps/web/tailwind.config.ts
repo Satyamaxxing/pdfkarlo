@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["'Plus Jakarta Sans'", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "Roboto", "sans-serif"],
-        heading: ["'Plus Jakarta Sans'", "sans-serif"],
+        heading: ["'Outfit'", "'Plus Jakarta Sans'", "sans-serif"],
       },
       colors: {
         brand: {
