@@ -64,7 +64,7 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`relative w-full max-w-xl mx-auto py-8 sm:py-10 px-6 rounded-3xl transition-all duration-300 flex flex-col items-center justify-center ${
+      className={`relative w-full max-w-xl mx-auto py-2 sm:py-3 px-6 rounded-3xl transition-all duration-300 flex flex-col items-center justify-center ${
         isDragging
           ? "bg-orange-50/90 border-2 border-dashed border-orange-500 ring-8 ring-orange-500/10 scale-[1.02] shadow-2xl shadow-orange-500/15"
           : "bg-transparent border-2 border-transparent"
@@ -90,15 +90,9 @@ export const FileUploadZone: React.FC<FileUploadZoneProps> = ({
       </button>
 
       {/* Clear Drop Sublabel */}
-      <p className="mt-3.5 text-xs sm:text-sm font-medium text-slate-400">
+      <p className="mt-2.5 text-xs sm:text-sm font-medium text-slate-400">
         {isDragging ? "Drop your PDF files here" : sublabel}
       </p>
-
-      {/* Unique PDFKarlo Trust Micro-Pill */}
-      <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50/90 border border-slate-200/80 text-slate-500 text-xs font-semibold backdrop-blur-xs">
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-        <span>100% In-Browser &bull; Zero Server Uploads &bull; Max 50MB</span>
-      </div>
     </div>
   );
 };

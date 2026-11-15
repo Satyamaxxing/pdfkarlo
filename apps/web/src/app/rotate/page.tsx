@@ -228,20 +228,20 @@ export default function RotatePdfPage() {
   const totalPagesDisplay = pageCount || Object.keys(pageAngles).length || 1;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-12">
       {/* Studio Navigation & Tool Switcher */}
       <ToolSwitcherNav currentTool="rotate" />
 
       {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
-        <div className="max-w-2xl mx-auto py-8 sm:py-14 flex flex-col items-center justify-center text-center space-y-6">
+        <div className="max-w-2xl mx-auto py-2 sm:py-4 flex flex-col items-center justify-center text-center space-y-4">
           <div>
-            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-2 flex items-center justify-center">
               <Image
                 src="/icons/tool-rotate.png"
                 alt="Rotate PDF"
-                width={80}
-                height={80}
+                width={64}
+                height={64}
                 priority
                 className="w-full h-full object-contain drop-shadow-sm hover:scale-105 transition-transform"
               />
@@ -249,9 +249,6 @@ export default function RotatePdfPage() {
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
               Rotate PDF Pages
             </h1>
-            <p className="mt-3 text-base sm:text-lg text-slate-500 font-normal max-w-lg mx-auto">
-              Rotate single, multiple, or all pages in your document.
-            </p>
           </div>
 
           <FileUploadZone
