@@ -82,6 +82,9 @@ export const metadata: Metadata = {
       "Use free online PDF tools to merge, split, rotate, reorder and remove PDF pages. No subscriptions, no signup. Process PDFs privately in your browser.",
     images: ["/og-image.png"],
   },
+  verification: {
+    google: "4hQ2uYZnWEouMs7JNYwRKdUxcIMJrXQDgVW9dvwhY0w",
+  },
 };
 
 const websiteJsonLd = {
