@@ -34,6 +34,7 @@ jobs:
         working-directory: apps/web
         run: npm run build
 
+      # Deploy static output (apps/web/out) to Cloudflare Pages project 'pdfkarlo' on main
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
