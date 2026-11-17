@@ -21,7 +21,7 @@ const TOOLS: { id: ToolId; name: string; href: string; iconSrc: string }[] = [
 
 export const ToolSwitcherNav: React.FC<ToolSwitcherNavProps> = ({ currentTool }) => {
   return (
-    <div className="flex items-center justify-center mb-5 sm:mb-6">
+    <div className="flex items-center justify-center mb-3 sm:mb-4">
       {/* Sleek Centered Unified Pill Dock */}
       <div className="inline-flex items-center gap-1 p-1.5 bg-slate-100/90 border border-slate-200/80 rounded-full overflow-x-auto max-w-full shadow-2xs backdrop-blur-sm no-scrollbar">
         <Link

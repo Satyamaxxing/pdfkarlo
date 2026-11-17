@@ -83,7 +83,7 @@ export const ToolSeoSection: React.FC<ToolSeoSectionProps> = ({ data }) => {
   };
 
   return (
-    <div className="mt-16 sm:mt-24 pt-12 border-t border-slate-200/90 text-slate-800">
+    <div className="mt-32 sm:mt-64 lg:mt-[28rem] pt-14 sm:pt-16 border-t border-slate-200/90 text-slate-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

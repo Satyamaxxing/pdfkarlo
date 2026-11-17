@@ -231,16 +231,16 @@ export default function RemovePdfPage() {
 
   return (
     <div
-      className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 ${
-        state === "IDLE" ? "pb-20 sm:pb-12" : "pb-8 sm:pb-10"
-      } min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col`}
+      className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 ${
+        state === "IDLE" ? "pb-16 sm:pb-24" : "pb-8 sm:pb-10"
+      } flex flex-col`}
     >
-      {/* Studio Navigation & Tool Switcher */}
+      {/* Studio Navigation & Tool Switcher (Elevated at top) */}
       {state === "IDLE" && <ToolSwitcherNav currentTool="remove" />}
 
       {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
-        <div className="max-w-2xl mx-auto my-auto py-8 sm:py-4 flex flex-col items-center justify-center text-center space-y-4 flex-1">
+        <div className="max-w-2xl w-full mx-auto flex flex-col items-center justify-center text-center space-y-4 pt-1 sm:pt-3 pb-8 sm:pb-12">
           <div>
             <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-2 flex items-center justify-center">
               <Image

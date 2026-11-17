@@ -85,18 +85,6 @@ export default function HomePage() {
                 <span>Zero Tracking &bull; Zero Data Retention</span>
               </div>
             </div>
-
-            {/* Quick Anchor to Expanded USP Section */}
-            <div className="mt-8">
-              <a
-                href="#why-in-browser"
-                className="group inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-orange-50/90 border border-orange-200/90 text-orange-700 hover:bg-orange-100 transition-all shadow-xs"
-              >
-                <Sparkles className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                <span className="text-xs font-bold">Why In-Browser is our core USP</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
           </div>
 
           {/* Right Column (Blue Box): All 5 Accessible Tools */}
