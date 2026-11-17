@@ -4,8 +4,15 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Cpu, Lock, Sparkles } from "lucide-react";
+import { useWorkspaceUI } from "@/components/WorkspaceUIContext";
 
 export const Footer: React.FC = () => {
+  const { isWorkspaceActive } = useWorkspaceUI();
+
+  if (isWorkspaceActive) {
+    return null;
+  }
+
   return (
     <footer className="mt-auto border-t border-slate-200 bg-white/95 backdrop-blur-md relative overflow-hidden">
       {/* Decorative PDF Workflow Wave Illustration */}

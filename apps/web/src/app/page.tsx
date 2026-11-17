@@ -26,19 +26,24 @@ export default function HomePage() {
   return (
     <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
       {/* 2-Column Split Hero & Tools Workspace */}
-      <section id="tools" className="pb-12 scroll-mt-20 relative">
+      <section id="tools" className="pb-12 scroll-mt-20 relative max-sm:overflow-x-clip">
         {/* Ambient Brand Mascot Background Watermark (Simple, Clean, Breathable) */}
         <div
-          className="hidden sm:block absolute -top-8 sm:-top-12 lg:-top-10 left-[48%] lg:left-[44%] -translate-x-1/2 w-[520px] sm:w-[640px] lg:w-[740px] xl:w-[820px] aspect-square pointer-events-none select-none -z-10 opacity-14 sm:opacity-15"
+          className="block absolute -top-4 sm:-top-12 lg:-top-10 left-1/2 sm:left-[48%] lg:left-[44%] -translate-x-1/2 w-[300px] min-[400px]:w-[360px] sm:w-[640px] lg:w-[740px] xl:w-[820px] aspect-square pointer-events-none select-none -z-10"
+          style={{ opacity: 0.12 }}
           aria-hidden="true"
         >
-          <div className="absolute inset-0 bg-orange-400/20 rounded-full blur-3xl -z-10" />
+          <div className="absolute inset-0 bg-orange-400/15 rounded-full blur-2xl sm:blur-3xl -z-10" />
           <Image
             src="/mascot.png"
             alt="PDFKarlo Mascot Watermark"
             width={820}
             height={683}
-            className="w-full h-full object-contain [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_90%)]"
+            className="w-full h-full object-contain"
+            style={{
+              WebkitMaskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%)",
+              maskImage: "radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%)",
+            }}
             priority
           />
         </div>

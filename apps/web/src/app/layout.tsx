@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { WorkspaceUIProvider } from "@/components/WorkspaceUIContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pdfkarlo.pages.dev"),
@@ -124,9 +125,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-white text-slate-900 font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <WorkspaceUIProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </WorkspaceUIProvider>
       </body>
     </html>
   );

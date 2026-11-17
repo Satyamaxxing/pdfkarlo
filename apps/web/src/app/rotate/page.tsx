@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ToolSwitcherNav } from "@/components/ToolSwitcherNav";
@@ -25,6 +25,7 @@ import { ClientPdfService } from "@/lib/pdf/clientPdfService";
 import { ProcessedOutput } from "@/lib/pdf/types";
 import { ToolSeoSection } from "@/components/ToolSeoSection";
 import { ROTATE_SEO_DATA } from "@/lib/seoData";
+import { useWorkspaceUI } from "@/components/WorkspaceUIContext";
 
 type RotateState = "IDLE" | "FILE_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
 
@@ -42,6 +43,12 @@ export default function RotatePdfPage() {
   const [fileBuffer, setFileBuffer] = useState<ArrayBuffer | null>(null);
   const [pageCount, setPageCount] = useState<number | null>(null);
   const [isDetectingPages, setIsDetectingPages] = useState<boolean>(false);
+  const { setIsWorkspaceActive } = useWorkspaceUI();
+
+  useEffect(() => {
+    setIsWorkspaceActive(state !== "IDLE");
+    return () => setIsWorkspaceActive(false);
+  }, [state, setIsWorkspaceActive]);
 
   // Per-page rotation angles (in degrees: 0, 90, 180, 270)
   const [pageAngles, setPageAngles] = useState<Record<number, number>>({});
@@ -230,9 +237,13 @@ export default function RotatePdfPage() {
   const totalPagesDisplay = pageCount || Object.keys(pageAngles).length || 1;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-20 sm:pb-12 min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col">
+    <div
+      className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 ${
+        state === "IDLE" ? "pb-20 sm:pb-12" : "pb-8 sm:pb-10"
+      } min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col`}
+    >
       {/* Studio Navigation & Tool Switcher */}
-      <ToolSwitcherNav currentTool="rotate" />
+      {state === "IDLE" && <ToolSwitcherNav currentTool="rotate" />}
 
       {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
@@ -528,8 +539,8 @@ export default function RotatePdfPage() {
           onNavigate={(nextP) => setZoomPage(nextP)}
         />
       )}
-      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs */}
-      <ToolSeoSection data={ROTATE_SEO_DATA} />
+      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs (only shown in landing state) */}
+      {state === "IDLE" && <ToolSeoSection data={ROTATE_SEO_DATA} />}
     </div>
   );
 }

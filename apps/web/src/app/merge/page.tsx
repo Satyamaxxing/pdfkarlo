@@ -25,7 +25,6 @@ import {
   Trash2,
   FileText,
   Eye,
-  FolderOpen,
   HelpCircle,
   ArrowRight,
   Sparkles,
@@ -34,6 +33,7 @@ import { ClientPdfService } from "@/lib/pdf/clientPdfService";
 import { ProcessedOutput } from "@/lib/pdf/types";
 import { ToolSeoSection } from "@/components/ToolSeoSection";
 import { MERGE_SEO_DATA } from "@/lib/seoData";
+import { useWorkspaceUI } from "@/components/WorkspaceUIContext";
 
 type MergeState = "IDLE" | "FILES_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
 
@@ -57,7 +57,12 @@ function formatBytes(bytes: number): string {
 export default function MergePdfPage() {
   const [state, setState] = useState<MergeState>("IDLE");
   const [docs, setDocs] = useState<MergeDocItem[]>([]);
-  const [viewMode, setViewMode] = useState<"unified" | "by-document">("unified");
+  const { setIsWorkspaceActive } = useWorkspaceUI();
+
+  useEffect(() => {
+    setIsWorkspaceActive(state !== "IDLE");
+    return () => setIsWorkspaceActive(false);
+  }, [state, setIsWorkspaceActive]);
 
   // High-res preview modal state
   const [zoomTarget, setZoomTarget] = useState<{
@@ -231,9 +236,13 @@ export default function MergePdfPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-20 sm:pb-12 min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col">
+    <div
+      className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 ${
+        state === "IDLE" ? "pb-20 sm:pb-12" : "pb-8 sm:pb-10"
+      } min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col`}
+    >
       {/* Studio Navigation & Tool Switcher */}
-      <ToolSwitcherNav currentTool="merge" />
+      {state === "IDLE" && <ToolSwitcherNav currentTool="merge" />}
 
       {/* Stage Area when in IDLE */}
       {state === "IDLE" && (
@@ -385,160 +394,41 @@ export default function MergePdfPage() {
             )}
           </div>
 
-          {/* View Mode Toggle & Page Preview Area */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setViewMode("unified")}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === "unified"
-                    ? "bg-orange-600 text-white shadow-sm shadow-orange-500/20"
-                    : "bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-orange-700"
-                }`}
-              >
-                <Layers className="w-3.5 h-3.5" />
-                <span>Unified Sequence ({totalCombinedPages} Pages)</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("by-document")}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === "by-document"
-                    ? "bg-orange-600 text-white shadow-sm shadow-orange-500/20"
-                    : "bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-orange-700"
-                }`}
-              >
-                <FolderOpen className="w-3.5 h-3.5" />
-                <span>By Document ({docs.length})</span>
-              </button>
-            </div>
-
-            <span className="text-xs text-slate-400">
-              Click zoom on any card to preview full size.
-            </span>
-          </div>
-
-          {/* Mode 1: Unified Page Grid (Displays every page from every uploaded document in merge order) */}
-          {viewMode === "unified" && (
-            <PdfPageGrid
-              totalPages={unifiedPageSequence.length}
-              infoBanner={
-                <div className="flex items-center gap-2 text-xs text-slate-600 px-1 font-medium">
-                  <Layers className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                  <span>
-                    Displaying every page across all {docs.length} documents in their exact output sequence.
+          {/* Page Preview Grid */}
+          <PdfPageGrid
+            totalPages={unifiedPageSequence.length}
+            hideToolbar={true}
+          >
+            {unifiedPageSequence.map((item) => (
+              <PdfThumbnailCard
+                key={`${item.docId}-page-${item.pageNumber}`}
+                docId={item.docId}
+                buffer={item.buffer}
+                pageNumber={item.pageNumber}
+                displayIndex={item.globalIndex}
+                onOpenZoom={() => {
+                  if (item.buffer) {
+                    setZoomTarget({
+                      docId: item.docId,
+                      buffer: item.buffer,
+                      pageNumber: item.pageNumber,
+                      totalPages: item.totalPages,
+                    });
+                  }
+                }}
+                badgeSlot={
+                  <span className="px-1.5 py-0.5 rounded bg-orange-600 text-white text-[9px] font-bold truncate max-w-[80px]">
+                    Doc #{item.docIndex}
                   </span>
-                </div>
-              }
-            >
-              {unifiedPageSequence.map((item) => (
-                <PdfThumbnailCard
-                  key={`${item.docId}-page-${item.pageNumber}`}
-                  docId={item.docId}
-                  buffer={item.buffer}
-                  pageNumber={item.pageNumber}
-                  displayIndex={item.globalIndex}
-                  onOpenZoom={() => {
-                    if (item.buffer) {
-                      setZoomTarget({
-                        docId: item.docId,
-                        buffer: item.buffer,
-                        pageNumber: item.pageNumber,
-                        totalPages: item.totalPages,
-                      });
-                    }
-                  }}
-                  badgeSlot={
-                    <span className="px-1.5 py-0.5 rounded bg-orange-600 text-white text-[9px] font-bold truncate max-w-[80px]">
-                      Doc #{item.docIndex}
-                    </span>
-                  }
-                  actionsSlot={
-                    <div className="text-[10px] text-slate-500 truncate text-center">
-                      Doc {item.docIndex} &bull; Page {item.pageNumber}
-                    </div>
-                  }
-                />
-              ))}
-            </PdfPageGrid>
-          )}
-
-          {/* Mode 2: Grouped by Document */}
-          {viewMode === "by-document" && (
-            <div className="space-y-6">
-              {docs.map((doc, docIdx) => (
-                <div
-                  key={doc.id}
-                  className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4"
-                >
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <div className="flex items-center gap-3">
-                      <span className="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center text-xs font-extrabold">
-                        #{docIdx + 1}
-                      </span>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">
-                          {doc.file.name}
-                        </h4>
-                        <p className="text-xs text-slate-400">
-                          {formatBytes(doc.file.size)} &bull; {doc.pageCount || 0} Pages
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => moveDoc(docIdx, docIdx - 1)}
-                        disabled={docIdx === 0}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-orange-600 disabled:opacity-20 cursor-pointer"
-                        title="Move doc up"
-                      >
-                        <ArrowUp className="w-4 h-4" />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => moveDoc(docIdx, docIdx + 1)}
-                        disabled={docIdx === docs.length - 1}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-orange-600 disabled:opacity-20 cursor-pointer"
-                        title="Move doc down"
-                      >
-                        <ArrowDown className="w-4 h-4" />
-                      </button>
-                    </div>
+                }
+                actionsSlot={
+                  <div className="text-[10px] text-slate-500 truncate text-center">
+                    Doc {item.docIndex} &bull; Page {item.pageNumber}
                   </div>
-
-                  {doc.pageCount && doc.pageCount > 0 ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 max-h-72 overflow-y-auto p-1">
-                      {Array.from({ length: doc.pageCount }, (_, i) => i + 1).map((pageNum) => (
-                        <PdfThumbnailCard
-                          key={`${doc.id}-p-${pageNum}`}
-                          docId={doc.id}
-                          buffer={doc.buffer}
-                          pageNumber={pageNum}
-                          onOpenZoom={() => {
-                            if (doc.buffer) {
-                              setZoomTarget({
-                                docId: doc.id,
-                                buffer: doc.buffer,
-                                pageNumber: pageNum,
-                                totalPages: doc.pageCount || 1,
-                              });
-                            }
-                          }}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-6 text-center text-xs text-slate-400">
-                      {doc.isInspecting ? "Loading page previews..." : doc.error || "No pages found."}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
+                }
+              />
+            ))}
+          </PdfPageGrid>
 
           {/* Merge Warnings */}
           {docs.length < 2 && (
@@ -676,8 +566,8 @@ export default function MergePdfPage() {
           rotation={0}
         />
       )}
-      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs */}
-      <ToolSeoSection data={MERGE_SEO_DATA} />
+      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs (only shown in landing state) */}
+      {state === "IDLE" && <ToolSeoSection data={MERGE_SEO_DATA} />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ToolSwitcherNav } from "@/components/ToolSwitcherNav";
@@ -30,6 +30,7 @@ import { ClientPdfService } from "@/lib/pdf/clientPdfService";
 import { ProcessedOutput } from "@/lib/pdf/types";
 import { ToolSeoSection } from "@/components/ToolSeoSection";
 import { REORDER_SEO_DATA } from "@/lib/seoData";
+import { useWorkspaceUI } from "@/components/WorkspaceUIContext";
 
 type ReorderState = "IDLE" | "FILE_SELECTED" | "PROCESSING" | "SUCCESS" | "ERROR";
 
@@ -47,6 +48,12 @@ export default function ReorderPdfPage() {
   const [fileBuffer, setFileBuffer] = useState<ArrayBuffer | null>(null);
   const [pageCount, setPageCount] = useState<number | null>(null);
   const [isDetectingPages, setIsDetectingPages] = useState<boolean>(false);
+  const { setIsWorkspaceActive } = useWorkspaceUI();
+
+  useEffect(() => {
+    setIsWorkspaceActive(state !== "IDLE");
+    return () => setIsWorkspaceActive(false);
+  }, [state, setIsWorkspaceActive]);
 
   // Ordered list of original 1-based page numbers: e.g. [1, 2, 3, 4]
   const [pageOrder, setPageOrder] = useState<number[]>([]);
@@ -212,9 +219,13 @@ export default function ReorderPdfPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-20 sm:pb-12 min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col">
+    <div
+      className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 ${
+        state === "IDLE" ? "pb-20 sm:pb-12" : "pb-8 sm:pb-10"
+      } min-h-[calc(100dvh-4rem)] sm:min-h-0 flex flex-col`}
+    >
       {/* Studio Navigation & Tool Switcher */}
-      <ToolSwitcherNav currentTool="reorder" />
+      {state === "IDLE" && <ToolSwitcherNav currentTool="reorder" />}
 
       {/* Step 1: Upload Zone */}
       {state === "IDLE" && (
@@ -508,8 +519,8 @@ export default function ReorderPdfPage() {
           rotation={0}
         />
       )}
-      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs */}
-      <ToolSeoSection data={REORDER_SEO_DATA} />
+      {/* Crawlable SEO Content, How-To, Technical Explanation, Use Cases & FAQs (only shown in landing state) */}
+      {state === "IDLE" && <ToolSeoSection data={REORDER_SEO_DATA} />}
     </div>
   );
 }
